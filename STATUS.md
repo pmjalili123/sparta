@@ -29,3 +29,5 @@ Site source: `site/` (open `site/index.html`, or run `python3 -m http.server 800
 ## Notes
 - The artifact preview blocks Calendly and Plausible, so the calendar shows the 8-second fallback message there. Both load on the real domain.
 - Goal calculator link uses utm_source=advisorpouya.com instead of the Instagram tags.
+- PDFs of the current site: `exports/advisorpouya-site-desktop.pdf` and `exports/advisorpouya-site-mobile.pdf` (calendar shown as a labeled placeholder).
+- Pending decision: Public Sans for UI text only (nav, buttons, contact labels, footer nav) to make the page read less like a newsletter.
