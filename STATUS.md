@@ -27,5 +27,5 @@ Site source: `site/` (open `site/index.html`, or run `python3 -m http.server 800
 6. From Pouya: hero image alt text, About photo, firm branding requirement (if yes, swap tokens only).
 
 ## Notes
-- The artifact preview blocks Calendly and Plausible, so the calendar shows its fallback link there. Both load on the real domain.
+- The artifact preview blocks Calendly and Plausible, so the calendar shows the 8-second fallback message there. Both load on the real domain.
 - Goal calculator link uses utm_source=advisorpouya.com instead of the Instagram tags.
