@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://advisorpouya.com/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Pouya Jalili, CPFA, financial advisor in Greater Boston">
+<meta property="og:image:alt" content="Pouya Jalili, CPFA®, financial advisor in Greater Boston">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pouya Jalili, CPFA® | Financial Advisor in Greater Boston">
 <meta name="twitter:description" content="Equity compensation for tech and biotech employees, planning for physicians, and retirement plans for small business owners in Greater Boston.">
@@ -42,7 +42,7 @@
       "@type": "Person",
       "@id": "https://advisorpouya.com/#pouya",
       "name": "Pouya Jalili",
-      "honorificSuffix": "CPFA",
+      "honorificSuffix": "CPFA®",
       "jobTitle": "Financial Advisor",
       "url": "https://advisorpouya.com/",
       "image": "https://advisorpouya.com/assets/pouya-about-700.jpg",
@@ -59,7 +59,7 @@
     {
       "@type": "FinancialService",
       "@id": "https://advisorpouya.com/#practice",
-      "name": "Pouya Jalili, CPFA, Financial Advisor",
+      "name": "Pouya Jalili, CPFA®, Financial Advisor",
       "url": "https://advisorpouya.com/",
       "image": "https://advisorpouya.com/assets/og-image.jpg",
       "telephone": "+1-774-843-4919",
@@ -87,16 +87,10 @@
 }
 </script>
 
-<!-- Analytics placeholder [VERIFY: GA4 or Plausible]. Uncomment one block once chosen.
-  Plausible:
-  <script defer data-domain="advisorpouya.com" src="https://plausible.io/js/script.js"></script>
-  GA4 (replace G-XXXXXXXXXX):
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
--->
+<script defer data-domain="advisorpouya.com" src="https://plausible.io/js/script.js"></script>
 
 <style>
-/* Layout: navy split hero with photo, then white and pale-blue bands. Yellow is for actions, emerald marks the one hero phrase. Single light theme by design. */
+/* Layout: navy split hero with photo, then white and pale-blue bands. Yellow is for actions only. Single light theme by design. */
 :root {
   --navy: #0F2C59;
   --navy-deep: #0A1F40;
@@ -105,7 +99,6 @@
   --white: #FFFFFF;
   --yellow: #F5C431;
   --yellow-hover: #FFD24D;
-  --emerald: #5EDBA4;
   --ink: #0E1A2E;
   --muted: #4E5E76;
   --line: #D3DDEB;
@@ -126,7 +119,6 @@ h1, h2, h3 { margin: 0; text-wrap: balance; color: inherit; }
 p { margin: 0; }
 .wrap { max-width: var(--max); margin: 0 auto; padding-inline: 24px; }
 @media (max-width: 480px) { .wrap { padding-inline: 18px; } }
-.label { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
 .h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(30px, 4vw, 44px); line-height: 1.12; color: var(--navy); }
 .verify { background: var(--verify-bg); color: var(--verify-ink); font-weight: 600; font-size: .9em; padding: 1px 6px; border-radius: 3px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; font: 600 16px var(--font-body); padding: 12px 22px; border-radius: 6px; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease; }
@@ -146,7 +138,7 @@ p { margin: 0; }
 .brand { font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--white); text-decoration: none; white-space: nowrap; padding-block: 8px; }
 .brand sup { font-size: .5em; }
 .links { display: flex; align-items: center; gap: 26px; }
-.links a { color: var(--on-navy); text-decoration: none; font-size: 15px; font-weight: 500; padding-block: 12px; }
+.links a { color: var(--on-navy); text-decoration: none; font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; min-height: 44px; }
 .links a:hover { color: var(--white); }
 .links .btn { color: var(--navy-deep); min-height: 44px; padding: 10px 16px; font-size: 15px; }
 .menu-btn { display: none; min-height: 44px; min-width: 44px; background: none; border: 1px solid rgba(255,255,255,.35); color: var(--white); border-radius: 6px; padding: 8px 14px; font: 600 15px var(--font-body); cursor: pointer; }
@@ -162,7 +154,6 @@ p { margin: 0; }
 .hero { background: var(--navy); color: var(--white); overflow: hidden; }
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 72px 80px; }
 .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(34px, 5vw, 60px); line-height: 1.1; letter-spacing: -.01em; }
-.hero h1 .mark { color: var(--emerald); font-style: italic; }
 .hero .sub { color: var(--on-navy); font-size: 19px; margin: 22px 0 32px; max-width: 46ch; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
 .textlink { color: var(--white); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); text-underline-offset: 5px; padding-block: 12px; }
@@ -189,12 +180,12 @@ section { scroll-margin-top: 72px; }
 .who { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 @media (max-width: 960px) { .who { grid-template-columns: 1fr; max-width: 640px; } }
 .who article { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 28px; display: grid; gap: 14px; align-content: start; grid-template-rows: auto auto 1fr auto; }
-.who .tag { justify-self: start; background: #E3F7EE; color: #0D5C3D; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+.who .tag { justify-self: start; background: var(--pale); color: var(--navy); font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 4px; }
 .who h3 { font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.2; color: var(--navy); }
 .who ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; align-content: start; }
 .who li { padding-left: 22px; position: relative; color: var(--muted); }
 .who li::before { content: ""; position: absolute; left: 0; top: .72em; width: 10px; height: 2px; background: var(--blue); }
-.who a { font-weight: 600; text-decoration: none; padding-block: 8px; }
+.who a { font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
 .who a:hover { text-decoration: underline; }
 
 /* Process */
@@ -213,6 +204,7 @@ section { scroll-margin-top: 72px; }
 @media (max-width: 960px) { .decisions { grid-template-columns: 1fr; max-width: 640px; } }
 .decisions article { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--navy); border-radius: 0 0 8px 8px; padding: 26px; display: grid; gap: 14px; align-content: start; scroll-margin-top: 80px; }
 .decisions h3 { font-family: var(--font-display); font-weight: 600; font-size: 22px; color: var(--navy); }
+.decisions .cpfa { color: var(--muted); font-size: 15px; border-top: 1px solid var(--line); padding-top: 14px; }
 .decisions ul { margin: 0; padding: 0; list-style: none; display: grid; }
 .decisions li { padding: 12px 0 12px 30px; position: relative; border-top: 1px solid var(--line); }
 .decisions li:first-child { border-top: 0; padding-top: 0; }
@@ -225,15 +217,15 @@ section { scroll-margin-top: 72px; }
 .about img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
 .about .copy { display: grid; gap: 18px; }
 .about .copy p { max-width: 62ch; }
-.quote { font-family: var(--font-display); font-style: italic; font-size: 24px; line-height: 1.35; color: var(--navy); border-left: 4px solid var(--emerald); padding-left: 20px; }
+.quote { font-family: var(--font-display); font-style: italic; font-size: 24px; line-height: 1.35; color: var(--navy); border-left: 4px solid var(--yellow); padding-left: 20px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips span { font-size: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; color: var(--muted); background: var(--white); }
 .findme { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 8px; }
-.findme h3 { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.findme h3 { font-size: 16px; font-weight: 600; color: var(--navy); }
 .findme ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
 
 /* Contact */
-.contact { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 32px; align-items: start; }
+.contact { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 32px; align-items: start; }
 @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
 .cal { background: var(--navy); color: var(--white); border-radius: 8px; padding: 32px; display: grid; gap: 16px; }
 .cal h3 { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.15; }
@@ -241,28 +233,17 @@ section { scroll-margin-top: 72px; }
 .cal .btn { justify-self: start; }
 .direct { display: grid; gap: 0; margin-top: 8px; border-top: 1px solid rgba(255,255,255,.12); padding-top: 10px; }
 .direct .line { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 12px; align-items: baseline; }
-.direct small { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #9FB4D3; }
+.direct small { font-size: 14px; font-weight: 600; color: #9FB4D3; }
 .direct a { color: var(--white); text-decoration: none; padding-block: 12px; overflow-wrap: anywhere; display: inline-block; }
 .direct a:hover { text-decoration: underline; }
 .direct .addr { padding-block: 10px; }
-.direct .addr .verify { display: inline-block; margin-top: 6px; }
 @media (max-width: 420px) { .direct .line { grid-template-columns: 1fr; gap: 0; } .direct small { padding-top: 8px; } .direct a { padding-block: 10px; } .direct .addr { padding-block: 4px 8px; } }
-form { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 28px; display: grid; gap: 16px; }
-form h3 { font-family: var(--font-display); font-weight: 600; font-size: 24px; color: var(--navy); }
-form p.small { color: var(--muted); font-size: 15px; margin-top: -8px; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-@media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } form, .cal { padding: 22px; } }
-.field { display: grid; gap: 6px; min-width: 0; }
-.field label { font-size: 14px; font-weight: 600; color: var(--navy); }
-.field input, .field select, .field textarea { font: 400 16px var(--font-body); min-height: 48px; padding: 12px 14px; border: 1px solid #A9B8CE; border-radius: 6px; background: var(--white); color: var(--ink); width: 100%; }
-.field textarea { min-height: 110px; resize: vertical; }
-.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
-.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form-note { font-size: 14px; color: var(--muted); }
-.status { font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 6px; background: #FDECEC; color: #9B2C2C; }
-.sent { display: grid; gap: 10px; padding: 8px 0; }
-.sent h3 { font-family: var(--font-display); font-size: 26px; color: var(--navy); }
-.sent p { color: var(--muted); }
+.embed { background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: grid; min-width: 0; }
+.calendly-inline-widget { width: 100%; min-width: 0; height: 700px; }
+.embed .fallback { padding: 28px; display: grid; gap: 12px; align-content: start; color: var(--muted); }
+.embed .fallback a { font-weight: 600; }
+.embed-note { font-size: 14px; color: var(--muted); padding: 14px 20px; border-top: 1px solid var(--line); }
+@media (max-width: 560px) { .cal { padding: 22px; } .calendly-inline-widget { height: 760px; } }
 
 /* Footer */
 footer { background: var(--navy-deep); color: #A9BBD6; font-size: 13px; line-height: 1.6; }
@@ -270,7 +251,7 @@ footer .wrap { padding-block: 48px; display: grid; gap: 16px; }
 footer .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
 footer .brand { font-size: 19px; }
 footer nav { display: flex; gap: 0 20px; flex-wrap: wrap; }
-footer nav a { color: var(--on-navy); text-decoration: none; padding-block: 10px; font-size: 14px; }
+footer nav a { color: var(--on-navy); text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; min-height: 44px; }
 footer nav a:hover { color: var(--white); }
 footer p { max-width: 95ch; }
 footer a { color: var(--on-navy); }
@@ -301,7 +282,7 @@ footer a { color: var(--on-navy); }
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div>
-        <h1 id="hero-h">My family came here in the '90s with $1,000. Now I help people get the <span class="mark">early money decisions</span> right.</h1>
+        <h1 id="hero-h">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</h1>
         <p class="sub">Financial advisor in Greater Boston for tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
         <div class="ctas">
           <a class="btn btn-y" href="https://calendly.com/pjalili-baystatefinancial/30min" target="_blank" rel="noopener">Book a 30-min call</a>
@@ -321,7 +302,6 @@ footer a { color: var(--on-navy); }
   <section class="band pale" id="who" aria-labelledby="who-h">
     <div class="wrap">
       <div class="head">
-        <span class="label">Who I help</span>
         <h2 class="h2" id="who-h">You probably recognize one of these</h2>
       </div>
       <div class="who">
@@ -334,18 +314,18 @@ footer a { color: var(--on-navy); }
             <li>You work in Kendall Square or along 128, and so does most of your net worth</li>
             <li>A liquidity event is coming and there's no plan for the day after</li>
           </ul>
-          <a href="#d-tech">The equity decisions →</a>
+          <a href="#d-tech">The equity decisions</a>
         </article>
         <article>
           <span class="tag">Physicians</span>
           <h3>You started earning late and the decisions came all at once</h3>
           <ul>
-            <li>You're a resident at a Boston teaching hospital, paying Boston rent on a resident's salary</li>
+            <li>Whether you're a resident at a Boston teaching hospital or an attending a few years out, your plan hasn't caught up with your career</li>
             <li>Student loans are competing with saving for retirement</li>
             <li>Your disability coverage may protect your ability to work, but not your specialty</li>
             <li>Your income is about to jump after training and there's no plan behind it</li>
           </ul>
-          <a href="#d-physicians">The physician decisions →</a>
+          <a href="#d-physicians">The physician decisions</a>
         </article>
         <article>
           <span class="tag">Small business owners</span>
@@ -356,7 +336,7 @@ footer a { color: var(--on-navy); }
             <li>Your own retirement is whatever is left after payroll</li>
             <li>There's no plan yet for what happens to the business later</li>
           </ul>
-          <a href="#d-business">The business owner decisions →</a>
+          <a href="#d-business">The business owner decisions</a>
         </article>
       </div>
     </div>
@@ -365,7 +345,6 @@ footer a { color: var(--on-navy); }
   <section class="band" id="how" aria-labelledby="how-h">
     <div class="wrap">
       <div class="head">
-        <span class="label">How I work</span>
         <h2 class="h2" id="how-h">It starts with a conversation</h2>
       </div>
       <div class="steps">
@@ -381,23 +360,21 @@ footer a { color: var(--on-navy); }
   <section class="band pale" id="decisions" aria-labelledby="dec-h">
     <div class="wrap">
       <div class="head">
-        <span class="label">What we decide</span>
         <h2 class="h2" id="dec-h">The decisions I help with</h2>
       </div>
       <div class="decisions">
         <article id="d-tech">
-          <span class="label">Tech &amp; biotech employees</span>
-          <h3>Equity compensation</h3>
+          <h3>Tech and biotech employees</h3>
           <ul>
             <li>Sell or hold RSUs when they vest</li>
             <li>When to exercise ISOs, and how much AMT that triggers</li>
             <li>Whether to buy ESPP shares, and when to sell them</li>
             <li>How to bring down a concentrated stock position before or after a liquidity event</li>
+            <li>Life coverage sized to a young family when most of your net worth is one company's stock</li>
           </ul>
         </article>
         <article id="d-physicians">
-          <span class="label">Physicians</span>
-          <h3>Residency through attending</h3>
+          <h3>Physicians, residency through attending</h3>
           <ul>
             <li>Own-occupation disability coverage sized to your specialty</li>
             <li>Paying down student loans versus saving for retirement</li>
@@ -406,14 +383,15 @@ footer a { color: var(--on-navy); }
           </ul>
         </article>
         <article id="d-business">
-          <span class="label">Small business owners</span>
-          <h3>Retirement plans and what comes later</h3>
+          <h3>Small business owners</h3>
           <ul>
             <li>A standalone 401(k) versus joining a pooled employer plan</li>
             <li>Plan design: who's eligible, how the match works, safe harbor or not</li>
             <li>Whether you qualify for small-employer startup tax credits</li>
             <li>How much to put toward your own retirement, and what happens to the business later</li>
+            <li>Buy-sell and key person coverage, so the business has a plan if an owner dies or becomes disabled</li>
           </ul>
+          <p class="cpfa">As a Certified Plan Fiduciary Advisor (CPFA®), I'm trained in the duties you take on as a plan sponsor, and we go through them before you set anything up.</p>
         </article>
       </div>
     </div>
@@ -426,7 +404,6 @@ footer a { color: var(--on-navy); }
         <img src="assets/pouya-about-700.jpg" srcset="assets/pouya-about-400.jpg 400w, assets/pouya-about-700.jpg 700w" sizes="(max-width: 860px) 380px, 440px" width="700" height="700" loading="lazy" decoding="async" alt="Head-and-shoulders portrait of Pouya Jalili">
       </picture>
       <div class="copy">
-        <span class="label">About</span>
         <h2 class="h2" id="about-h">Why I do this</h2>
         <p class="quote">Most people my age don't have someone in their corner for the financial decisions that matter early on. I try to be that person.</p>
         <p>My family came to this country from Iran in the '90s with $1,000. I grew up watching them build everything from scratch, and that shaped how I think about money, risk, and what it means to build something that lasts.</p>
@@ -449,7 +426,6 @@ footer a { color: var(--on-navy); }
   <section class="band pale" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="head">
-        <span class="label">Contact</span>
         <h2 class="h2" id="contact-h">Let's talk</h2>
       </div>
       <div class="contact">
@@ -461,38 +437,20 @@ footer a { color: var(--on-navy); }
             <div class="line"><small>Text</small><a href="sms:+16175442879">617-544-2879</a></div>
             <div class="line"><small>Office</small><a href="tel:+17748434919">774-843-4919</a></div>
             <div class="line"><small>Email</small><a href="mailto:pjalili@baystatefinancial.com">pjalili@baystatefinancial.com</a></div>
-            <div class="line"><small>Address</small><div class="addr">134 Turnpike Road, Suite 300<br>Southborough, MA 01772<br><span class="verify">[VERIFY: Wakefield office address and whether to list it]</span></div></div>
+            <div class="line"><small>Address</small><div class="addr">134 Turnpike Road, Suite 300<br>Southborough, MA 01772</div></div>
             <div class="line"><small>Instagram</small><a href="https://www.instagram.com/advisorpouya/" target="_blank" rel="noopener">@advisorpouya</a></div>
             <div class="line"><small>LinkedIn</small><a href="https://www.linkedin.com/in/pouya-jalili-cpfa%C2%AE-22857b11a" target="_blank" rel="noopener">Pouya Jalili, CPFA®</a></div>
           </div>
         </div>
 
-        <form id="contactForm" action="https://formsubmit.co/pjalili@baystatefinancial.com" method="POST">
-          <h3>Or send a note</h3>
-          <p class="small">I'll reply by email or text.</p>
-          <input type="hidden" name="_subject" value="New inquiry from advisorpouya.com">
-          <input type="hidden" name="_template" value="table">
-          <div class="hp" aria-hidden="true"><label for="f-honey">Leave this field empty</label><input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off"></div>
-          <div class="row2">
-            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-          </div>
-          <div class="row2">
-            <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
-            <div class="field"><label for="f-topic">What's this about?</label>
-              <select id="f-topic" name="topic">
-                <option>Equity compensation (tech or biotech)</option>
-                <option>Physician planning</option>
-                <option>Small business retirement plan</option>
-                <option>Something else</option>
-              </select>
+        <div class="embed">
+          <div class="calendly-inline-widget" id="calendly" data-url="https://calendly.com/pjalili-baystatefinancial/30min?hide_gdpr_banner=1&amp;primary_color=0f2c59">
+            <div class="fallback">
+              <p>The calendar loads here. If it doesn't, <a href="https://calendly.com/pjalili-baystatefinancial/30min" target="_blank" rel="noopener">open my calendar in a new tab</a>.</p>
             </div>
           </div>
-          <div class="field"><label for="f-msg">Anything you'd like me to know? (optional)</label><textarea id="f-msg" name="message"></textarea></div>
-          <div id="formStatus" class="status" role="alert" hidden></div>
-          <button class="btn btn-outline" type="submit" id="sendBtn" style="justify-self:start">Send message</button>
-          <p class="form-note">Please don't include account numbers or other sensitive information in this form.</p>
-        </form>
+          <p class="embed-note">Please don't include account numbers or other sensitive information when you book.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -526,35 +484,18 @@ footer a { color: var(--on-navy); }
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && navLinks.classList.contains('open')) { closeMenu(); menuBtn.focus(); } });
 
-  // Contact form: posts to FormSubmit [VERIFY: form service], which emails pjalili@baystatefinancial.com
-  const form = document.getElementById('contactForm'), statusEl = document.getElementById('formStatus'), sendBtn = document.getElementById('sendBtn');
-  function fail(msg) { statusEl.textContent = msg; statusEl.hidden = false; }
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusEl.hidden = true;
-    if (form._honey.value) return;
-    const name = form.elements.name.value.trim(), email = form.elements.email.value.trim();
-    if (!name) { fail('Add your name so I know who to reply to.'); form.elements.name.focus(); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { fail('Add a valid email address so I can reply.'); form.elements.email.focus(); return; }
-    sendBtn.disabled = true; sendBtn.textContent = 'Sending…';
-    try {
-      const res = await fetch('https://formsubmit.co/ajax/pjalili@baystatefinancial.com', {
-        method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
-      });
-      if (!res.ok) throw new Error(res.status);
-      const sent = document.createElement('div');
-      sent.className = 'sent'; sent.setAttribute('role', 'status'); sent.tabIndex = -1;
-      const h = document.createElement('h3'); h.textContent = 'Thanks, ' + name.split(' ')[0] + '. Your note is on its way.';
-      const p = document.createElement('p');
-      p.innerHTML = 'I\'ll reply by email or text. If it\'s easier, you can also <a href="https://calendly.com/pjalili-baystatefinancial/30min" target="_blank" rel="noopener">book a time directly</a>.';
-      sent.append(h, p);
-      form.replaceChildren(sent);
-      sent.focus();
-    } catch (err) {
-      fail("That didn't go through. Email me at pjalili@baystatefinancial.com or text 617-544-2879.");
-      sendBtn.disabled = false; sendBtn.textContent = 'Send message';
-    }
-  });
+  // Calendly embed: load the widget script only when the contact section is close to view
+  const cal = document.getElementById('calendly');
+  function loadCalendly() {
+    if (loadCalendly.done) return; loadCalendly.done = true;
+    const sc = document.createElement('script');
+    sc.src = 'https://assets.calendly.com/assets/external/widget.js'; sc.async = true;
+    document.body.appendChild(sc);
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { loadCalendly(); io.disconnect(); } }, { rootMargin: '600px 0px' });
+    io.observe(cal);
+  } else { loadCalendly(); }
 </script>
 </body>
 </html>
