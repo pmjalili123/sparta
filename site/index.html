@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pouya Jalili, CPFA®</title>
+<meta name="description" content="Pouya Jalili, CPFA®, financial advisor in Greater Boston. Equity compensation, retirement, insurance and tax-aware planning for tech employees, physicians, young professionals and small business owners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: navy split hero with photo, then white and pale-blue bands; yellow is reserved for actions and one highlight. Single light theme by design. */
+:root {
+  --navy: #0F2C59;
+  --navy-deep: #0A1F40;
+  --blue: #1D5FB4;
+  --pale: #EDF3FB;
+  --white: #FFFFFF;
+  --yellow: #F5C431;
+  --yellow-soft: #FFF4CC;
+  --ink: #0E1A2E;
+  --muted: #55657D;
+  --line: #D3DDEB;
+  --on-navy: #C8D6EB;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --max: 1160px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: var(--blue); }
+h1, h2, h3 { margin: 0; text-wrap: balance; color: inherit; }
+p { margin: 0; }
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: 24px; }
+.label { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(30px, 4vw, 44px); line-height: 1.12; color: var(--navy); }
+.lede { color: var(--muted); max-width: 60ch; font-size: 18px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 16px var(--font-body); padding: 14px 22px; border-radius: 6px; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-y { background: var(--yellow); color: var(--navy-deep); }
+.btn-y:hover { background: #FFD24D; }
+.btn-ghost { color: var(--white); border-color: rgba(255,255,255,.4); }
+.btn-ghost:hover { border-color: var(--white); }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--navy); color: var(--white); border-bottom: 1px solid rgba(255,255,255,.08); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 14px; }
+.brand { font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--white); text-decoration: none; white-space: nowrap; }
+.brand sup { font-size: .5em; }
+.links { display: flex; align-items: center; gap: 28px; }
+.links a { color: var(--on-navy); text-decoration: none; font-size: 15px; font-weight: 500; }
+.links a:hover { color: var(--white); }
+.links .btn { color: var(--navy-deep); padding: 10px 16px; font-size: 15px; }
+.menu-btn { display: none; background: none; border: 1px solid rgba(255,255,255,.35); color: var(--white); border-radius: 6px; padding: 8px 12px; font: 600 14px var(--font-body); cursor: pointer; }
+@media (max-width: 860px) {
+  .menu-btn { display: inline-block; }
+  .links { position: absolute; left: 0; right: 0; top: 100%; background: var(--navy); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 24px 20px; display: none; }
+  .links.open { display: flex; }
+  .links a { padding: 12px 0; border-top: 1px solid rgba(255,255,255,.08); }
+  .links .btn { margin-top: 12px; justify-content: center; border-top: 0; }
+}
+
+/* Hero */
+.hero { background: var(--navy); color: var(--white); overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 72px 80px; }
+.hero h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(36px, 5vw, 60px); line-height: 1.06; letter-spacing: -.01em; }
+.hero h1 .mark { background: linear-gradient(transparent 62%, rgba(245,196,49,.75) 62%, rgba(245,196,49,.75) 92%, transparent 92%); }
+.hero p { color: var(--on-navy); font-size: 19px; margin: 22px 0 32px; max-width: 48ch; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero .where { margin-top: 28px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #8FA6C8; }
+.photo { position: relative; }
+.photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 4px; }
+.photo::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 2px solid var(--yellow); border-radius: 4px; z-index: 0; }
+.photo img { position: relative; z-index: 1; }
+.photo figcaption { position: absolute; z-index: 2; left: -16px; bottom: 28px; background: var(--white); color: var(--navy); padding: 12px 16px; border-radius: 4px; box-shadow: 0 10px 30px rgba(10,31,64,.25); font-size: 14px; line-height: 1.35; }
+.photo figcaption b { display: block; font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 48px; padding-block: 48px 64px; }
+  .photo { max-width: 420px; margin-right: 18px; }
+  .photo figcaption { left: 12px; }
+}
+
+/* Sections */
+section { scroll-margin-top: 72px; }
+.band { padding-block: 88px; }
+.band.pale { background: var(--pale); }
+.head { display: grid; gap: 14px; margin-bottom: 44px; }
+@media (max-width: 640px) { .band { padding-block: 60px; } }
+
+/* Who I help */
+.who { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .who { grid-template-columns: 1fr; } }
+.who article { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 28px; display: grid; gap: 14px; align-content: start; }
+.who .tag { justify-self: start; background: var(--yellow-soft); color: var(--navy); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+.who h3 { font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--navy); }
+.who ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.who li { padding-left: 22px; position: relative; color: var(--muted); }
+.who li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px; height: 2px; background: var(--blue); }
+.who a { font-weight: 600; text-decoration: none; }
+.who a:hover { text-decoration: underline; }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: s; border-top: 2px solid var(--navy); }
+@media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+.step { padding: 24px 24px 8px 0; display: grid; gap: 8px; align-content: start; }
+.step .n { width: 34px; height: 34px; border-radius: 50%; background: var(--yellow); color: var(--navy-deep); font-weight: 700; display: grid; place-items: center; font-size: 15px; }
+.step h3 { font-size: 19px; font-weight: 600; color: var(--navy); }
+.step p { color: var(--muted); font-size: 16px; }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+@media (max-width: 860px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
+.services div { background: var(--white); padding: 26px; display: grid; gap: 6px; align-content: start; }
+.services h3 { font-size: 18px; font-weight: 600; color: var(--navy); }
+.services p { color: var(--muted); font-size: 16px; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 64px; align-items: center; }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; gap: 36px; } }
+.about img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; border-radius: 4px; }
+.about .copy { display: grid; gap: 18px; }
+.about .copy p { max-width: 62ch; }
+.quote { font-family: var(--font-display); font-style: italic; font-size: 24px; line-height: 1.35; color: var(--navy); border-left: 4px solid var(--yellow); padding-left: 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { font-size: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; color: var(--muted); background: var(--white); }
+
+/* Credentials */
+.creds { background: var(--navy-deep); color: var(--white); }
+.creds .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: 36px; }
+@media (max-width: 860px) { .creds .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .creds .wrap { grid-template-columns: 1fr; } }
+.creds div { display: grid; gap: 2px; border-left: 2px solid var(--yellow); padding-left: 14px; }
+.creds b { font-family: var(--font-display); font-size: 21px; font-weight: 600; }
+.creds span { color: var(--on-navy); font-size: 14px; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; gap: 40px; } }
+form { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 28px; display: grid; gap: 16px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; color: var(--navy); }
+.field input, .field select, .field textarea { font: 400 16px var(--font-body); padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--white); color: var(--ink); width: 100%; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,95,180,.15); }
+.hp { position: absolute; left: -9999px; }
+.form-note { font-size: 13px; color: var(--muted); }
+.status { font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 6px; }
+.status.ok { background: #E6F4EA; color: #1E6B36; }
+.status.err { background: #FDECEC; color: #9B2C2C; }
+.direct { display: grid; gap: 22px; align-content: start; }
+.direct .cal { background: var(--navy); color: var(--white); border-radius: 8px; padding: 26px; display: grid; gap: 12px; }
+.direct .cal h3 { font-family: var(--font-display); font-weight: 500; font-size: 26px; }
+.direct .cal p { color: var(--on-navy); }
+.direct .cal .btn { justify-self: start; }
+.line { display: grid; gap: 2px; }
+.line small { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.line a, .line span { font-size: 17px; color: var(--ink); text-decoration: none; }
+.line a:hover { color: var(--blue); }
+
+/* Footer */
+footer { background: var(--navy-deep); color: #9FB2CF; font-size: 13px; line-height: 1.6; }
+footer .wrap { padding-block: 48px; display: grid; gap: 16px; }
+footer .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+footer .brand { font-size: 19px; }
+footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+footer nav a { color: var(--on-navy); text-decoration: none; }
+footer p { max-width: 95ch; }
+footer a { color: var(--on-navy); }
+.crn { display: inline-block; background: var(--yellow); color: var(--navy-deep); font-weight: 700; padding: 2px 8px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Pouya Jalili, CPFA<sup>®</sup></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks" aria-label="Main">
+      <a href="#who">Who I help</a>
+      <a href="#how">How I work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-y" href="https://calendly.com/pjalili-baystatefinancial/30min" target="_blank" rel="noopener">Book a 30-min call</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>My family came here in the '90s with $1,000. I help people get the <span class="mark">early money decisions</span> right.</h1>
+        <p>I'm a financial advisor in Greater Boston. I work with tech employees, physicians, young professionals and small business owners on equity compensation, retirement, insurance and tax-aware planning.</p>
+        <div class="ctas">
+          <a class="btn btn-y" href="https://calendly.com/pjalili-baystatefinancial/30min" target="_blank" rel="noopener">Book a 30-min call</a>
+          <a class="btn btn-ghost" href="#who">See who I work with</a>
+        </div>
+        <div class="where">Southborough · Newton · Greater Boston</div>
+      </div>
+      <figure class="photo" style="margin:0">
+        <img src="assets/pouya-headshot.jpg" alt="Pouya Jalili, financial advisor, in a dark suit in an office">
+        <figcaption><b>Pouya Jalili, CPFA®</b>Financial Advisor, Baystate Financial</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band pale" id="who">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Who I help</span>
+        <h2 class="h2">You probably recognize one of these</h2>
+      </div>
+      <div class="who">
+        <article>
+          <span class="tag">Tech employees</span>
+          <h3>Your stock vests faster than you can decide what to do with it</h3>
+          <ul>
+            <li>RSUs land every quarter and you're not sure whether to hold or sell</li>
+            <li>ISOs, NSOs and AMT you'd rather not learn about in April</li>
+            <li>Too much of your net worth riding on one company</li>
+          </ul>
+          <a href="#services">Equity compensation planning →</a>
+        </article>
+        <article>
+          <span class="tag">Physicians</span>
+          <h3>You started earning late and the decisions came all at once</h3>
+          <ul>
+            <li>Student loans competing with saving for retirement</li>
+            <li>Disability coverage that actually protects your specialty</li>
+            <li>A big jump in income after training with no plan behind it</li>
+          </ul>
+          <a href="#services">Planning for physicians →</a>
+        </article>
+        <article>
+          <span class="tag">Young professionals</span>
+          <h3>Your first real paycheck, and no one to ask</h3>
+          <ul>
+            <li>401(k), Roth IRA, HSA: which comes first?</li>
+            <li>Life insurance before you have a reason to think about it</li>
+            <li>Building a plan you can still use in ten years</li>
+          </ul>
+          <a href="#services">Getting started →</a>
+        </article>
+        <article>
+          <span class="tag">Small business owners</span>
+          <h3>You run the business. Your own plan keeps getting pushed</h3>
+          <ul>
+            <li>You want a 401(k) for your team but not the admin that comes with it</li>
+            <li>Your own retirement is an afterthought</li>
+            <li>No plan yet for what happens to the business later</li>
+          </ul>
+          <a href="#services">Business owner planning →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="how">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">How I work</span>
+        <h2 class="h2">It starts with a conversation</h2>
+        <p class="lede">No forms to fill out first. We talk about what's on your mind and go from there.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Talk</h3><p>Thirty minutes on what you're trying to figure out. No prep needed.</p></div>
+        <div class="step"><span class="n">2</span><h3>Plan</h3><p>We put your goals, accounts, benefits and coverage into one picture.</p></div>
+        <div class="step"><span class="n">3</span><h3>Put it in place</h3><p>Open accounts, adjust coverage, set up the savings.</p></div>
+        <div class="step"><span class="n">4</span><h3>Review</h3><p>Check in as your life, job and pay change.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band pale" id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">What we cover</span>
+        <h2 class="h2">Planning areas</h2>
+      </div>
+      <div class="services">
+        <div><h3>Equity compensation</h3><p>RSUs, ISOs, NSOs and ESPP, and how they fit with the rest of your plan.</p></div>
+        <div><h3>Retirement planning</h3><p>How much to save, which accounts to use, and in what order.</p></div>
+        <div><h3>401(k) &amp; PEP for businesses</h3><p>Plan setup and design for small employers.</p></div>
+        <div><h3>Insurance design</h3><p>Life and disability coverage sized to your situation.</p></div>
+        <div><h3>Tax-aware planning</h3><p>Coordinating financial decisions with your tax picture.</p></div>
+        <div><h3>Education funding</h3><p>529 plans and other ways to save for school.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="about">
+    <div class="wrap about">
+      <img src="assets/pouya-headshot.jpg" alt="Portrait of Pouya Jalili">
+      <div class="copy">
+        <span class="label">About</span>
+        <h2 class="h2">Why I do this</h2>
+        <p class="quote">Most people my age don't have someone in their corner for the financial decisions that matter early on. I try to be that person.</p>
+        <p>My family came to this country in the '90s with $1,000. I grew up watching them build everything from scratch, and that shaped how I think about money, risk, and what it means to build something that lasts.</p>
+        <p>I come from a family of engineers, scientists and doctors. I started in aerospace engineering at the University of Alabama, then switched to finance and real estate. Today I'm a financial advisor with Baystate Financial in Southborough.</p>
+        <p>I live in Newton with my Corgi, Rosie. When I'm not working, I'm usually out for a run.</p>
+        <div class="chips"><span>Persian (native)</span><span>Spanish (limited working)</span><span>BS Finance &amp; Real Estate, University of Alabama</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="creds" aria-label="Credentials">
+    <div class="wrap">
+      <div><b>CPFA®</b><span>Certified Plan Fiduciary Advisor</span></div>
+      <div><b>Baystate Financial</b><span>Southborough, MA</span></div>
+      <div><b>University of Alabama</b><span>BS, Finance &amp; Real Estate</span></div>
+      <div><b>Licensed in</b><span>Insurance: 17 states · Securities: 7 states</span></div>
+    </div>
+  </section>
+
+  <section class="band pale" id="contact">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Contact</span>
+        <h2 class="h2">Let's talk</h2>
+        <p class="lede">Book a time directly, or send a note and I'll get back to you.</p>
+      </div>
+      <div class="contact">
+        <form id="contactForm" action="https://formsubmit.co/pjalili@baystatefinancial.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New inquiry from advisorpouya.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="row2">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="f-topic">What's on your mind?</label>
+              <select id="f-topic" name="topic">
+                <option>Equity compensation (RSUs, options)</option>
+                <option>Planning as a physician</option>
+                <option>Retirement planning</option>
+                <option>401(k) for my business</option>
+                <option>Insurance</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="f-msg">Anything you'd like me to know? (optional)</label><textarea id="f-msg" name="message"></textarea></div>
+          <div id="formStatus" class="status" hidden></div>
+          <button class="btn btn-y" type="submit" id="sendBtn" style="justify-self:start">Send message</button>
+          <p class="form-note">Please don't include account numbers or other sensitive information in this form.</p>
+        </form>
+        <div class="direct">
+          <div class="cal">
+            <h3>Prefer to pick a time?</h3>
+            <p>Grab 30 minutes on my calendar. We'll talk through what's on your mind.</p>
+            <a class="btn btn-y" href="https://calendly.com/pjalili-baystatefinancial/30min" target="_blank" rel="noopener">Open my calendar</a>
+          </div>
+          <div class="line"><small>Text</small><a href="sms:+16175442879">617-544-2879</a></div>
+          <div class="line"><small>Office</small><a href="tel:+17748434919">774-843-4919</a></div>
+          <div class="line"><small>Email</small><a href="mailto:pjalili@baystatefinancial.com">pjalili@baystatefinancial.com</a></div>
+          <div class="line"><small>Office address</small><span>134 Turnpike Road, Suite 300<br>Southborough, MA 01772</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <span class="brand">Pouya Jalili, CPFA®</span>
+      <nav aria-label="Footer">
+        <a href="#who">Who I help</a><a href="#how">How I work</a><a href="#about">About</a><a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/pouya-jalili-cpfa%C2%AE-22857b11a" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+    <p>Pouya Jalili is a registered representative of and offers securities and investment advisory services through MML Investors Services, LLC, Member <a href="https://www.sipc.org" target="_blank" rel="noopener">SIPC</a>. Supervisory address: 1 Marina Park Drive, 16th Floor, Boston, MA 02210, 617-585-4500.</p>
+    <p>Licensed to sell insurance in: MA, TX, PA, UT, AL, CA, MD, FL, CT, TN, ME, IL, GA, NJ, WV, NC, RI. Licensed to offer securities in: MA, ME, NY, MO, RI, NH, CA.</p>
+    <p><span class="crn">CRN placeholder</span></p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn'), navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menu';
+  }));
+
+  // Contact form: posts to FormSubmit, which emails pjalili@baystatefinancial.com
+  const form = document.getElementById('contactForm'), statusEl = document.getElementById('formStatus'), sendBtn = document.getElementById('sendBtn');
+  function show(msg, ok) { statusEl.textContent = msg; statusEl.className = 'status ' + (ok ? 'ok' : 'err'); statusEl.hidden = false; }
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim(), email = form.email.value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('Add your name and a valid email so I can reply.', false); return; }
+    sendBtn.disabled = true; sendBtn.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/pjalili@baystatefinancial.com', {
+        method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      show("Thanks, your message is on its way. I'll get back to you soon.", true);
+    } catch (err) {
+      show("That didn't go through. Email me directly at pjalili@baystatefinancial.com or text 617-544-2879.", false);
+    } finally {
+      sendBtn.disabled = false; sendBtn.textContent = 'Send message';
+    }
+  });
+</script>
+</body>
+</html>
