@@ -1,161 +1,114 @@
 <title>advisorpouya.com Wireframe</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: wireframe of the site on the left, blueprint notes pinned beside each section on the right; stacks on phones. */
+@font-face { font-family: "Literata"; src: url("fonts/literata-latin-var.woff2") format("woff2"), url("../site/fonts/literata-latin-var.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
+/* Layout: grey-box wireframe of the current build on the left, notes and open items pinned beside each section on the right; stacks on phones. Uses the site's own tokens. */
 :root {
-  --navy: #12305B;      /* primary blue: nav, hero, footer */
-  --blue: #1F5FAE;      /* links, secondary buttons */
-  --sky: #EAF1FA;       /* light blue section fill */
-  --white: #FFFFFF;
-  --yellow: #F2C230;    /* accent: CTA buttons, underline marks */
-  --ink: #0F1B2D;
-  --muted: #5A6B82;
-  --line: #CBD6E6;
-  --canvas: #F3F6FA;    /* page behind the wireframe */
-  --note-bg: #FFFBEA;
-  --note-line: #E7CF7A;
-  --hatch: #D6DFEC;
-  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --ink: #1E2A36;
+  --paper: #F6F7F5;
+  --firuzeh: #13706F;
+  --slate: #5B6670;
+  --box: #E4E8E6;
+  --box-line: #B9C1BE;
+  --canvas: #EBEEEC;
+  --note: #FFFFFF;
+  --flag: #8A5A00;
+  --flag-bg: #FFF3D6;
+  --font: "Literata", Georgia, serif;
+  --ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --white: #13243B; --sky: #182C47; --ink: #E8EEF7; --muted: #9DB0C8; --line: #2B4262;
-    --canvas: #0B1626; --note-bg: #231F10; --note-line: #6B5A1E; --hatch: #24395A; --blue: #7FB0EE;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --white: #13243B; --sky: #182C47; --ink: #E8EEF7; --muted: #9DB0C8; --line: #2B4262;
-  --canvas: #0B1626; --note-bg: #231F10; --note-line: #6B5A1E; --hatch: #24395A; --blue: #7FB0EE;
-  color-scheme: dark;
-}
-
 * { box-sizing: border-box; }
-body { background: var(--canvas); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; padding: 28px 16px 64px; }
-h1, h2, h3 { text-wrap: balance; margin: 0; }
-.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 28px; }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--ui); font-size: 14px; line-height: 1.5; padding: 28px 16px 64px; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 24px; }
 
 /* Header */
-.top { display: flex; flex-wrap: wrap; gap: 20px; align-items: end; justify-content: space-between; }
-.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 4vw, 36px); }
-.top p { margin: 4px 0 0; color: var(--muted); max-width: 60ch; }
-.controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-.swatches { display: flex; gap: 6px; align-items: center; font: 500 11px/1 var(--font-mono); color: var(--muted); }
-.sw { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); }
-.toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--white); }
-.toggle button { font: 500 13px var(--font-body); border: 0; background: transparent; color: var(--muted); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
-.toggle button[aria-pressed="true"] { background: var(--navy); color: #fff; }
-.toggle button:focus-visible, .btn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.top { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; justify-content: space-between; }
+.top h1 { font-family: var(--font); font-weight: 500; font-size: clamp(24px, 3.6vw, 32px); font-variation-settings: "opsz" 48; }
+.top p { color: var(--slate); max-width: 62ch; margin-top: 4px; }
+.controls { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.swatches { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--slate); }
+.sw { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--box-line); }
+.toggle { display: inline-flex; border: 1px solid var(--box-line); border-radius: 999px; padding: 3px; background: var(--note); }
+.toggle button { font: 600 13px var(--ui); border: 0; background: transparent; color: var(--slate); padding: 6px 14px; border-radius: 999px; cursor: pointer; min-height: 32px; }
+.toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+:focus-visible { outline: 2px solid var(--firuzeh); outline-offset: 2px; }
 
-/* Rows: mock + note */
-.board { display: grid; gap: 0; }
-.row { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
-.row + .row { margin-top: 0; }
+/* Board */
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: stretch; }
+.note { align-self: start; }
 .frame-col { min-width: 0; display: flex; justify-content: center; }
-.site { width: 100%; background: var(--white); border-left: 1px solid var(--line); border-right: 1px solid var(--line); transition: max-width .35s ease; }
-body.phone .site { max-width: 390px; }
-.row:first-child .site { border-top: 1px solid var(--line); border-radius: 12px 12px 0 0; overflow: hidden; }
-.row:last-child .site { border-bottom: 1px solid var(--line); border-radius: 0 0 12px 12px; overflow: hidden; }
-.chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--sky); border-bottom: 1px solid var(--line); }
-.chrome i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; }
-.chrome span { margin-left: 10px; font: 400 12px var(--font-mono); color: var(--muted); background: var(--white); padding: 3px 12px; border-radius: 6px; }
+.site { width: 100%; background: var(--paper); border-inline: 1px solid var(--box-line); padding: 28px 40px; display: grid; gap: 20px; align-content: start; transition: max-width .3s ease; }
+body.phone .site { max-width: 360px; padding: 22px 16px; }
+.row:first-of-type .site { border-top: 1px solid var(--box-line); border-radius: 10px 10px 0 0; }
+.row:last-of-type .site { border-bottom: 1px solid var(--box-line); border-radius: 0 0 10px 10px; }
+.note { background: var(--note); border: 1px solid var(--box-line); border-radius: 8px; padding: 14px 16px; margin-block: 14px; display: grid; gap: 8px; font-size: 13.5px; }
+.note .tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); }
+.note ul { padding-left: 18px; display: grid; gap: 4px; }
+.note .open { color: var(--flag); font-weight: 600; }
 
-.note { background: var(--note-bg); border: 1px dashed var(--note-line); border-radius: 8px; padding: 14px 16px; margin-block: 18px; font-size: 13.5px; }
-.note b.tag { font: 500 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
-.note ul { margin: 6px 0 0; padding-left: 18px; }
-.note li + li { margin-top: 4px; }
-.note .open { color: var(--blue); font-weight: 600; }
+/* Wireframe primitives */
+.s-font { font-family: var(--font); color: var(--ink); }
+.w-h1 { font-family: var(--font); font-weight: 450; font-variation-settings: "opsz" 72; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.12; letter-spacing: -.01em; max-width: 22ch; text-wrap: balance; }
+body.phone .w-h1 { font-size: 26px; }
+.w-h2 { font-family: var(--font); font-weight: 600; font-size: 20px; line-height: 1.2; }
+.w-h3 { font-family: var(--font); font-weight: 600; font-size: 16px; line-height: 1.3; }
+.w-p { font-family: var(--font); font-size: 13.5px; line-height: 1.6; color: var(--ink); max-width: 60ch; }
+.w-p.slate { color: var(--slate); }
+.btn { display: inline-flex; align-items: center; min-height: 34px; padding: 6px 14px; background: var(--firuzeh); color: var(--paper); border-radius: 4px; font-family: var(--font); font-weight: 600; font-size: 13px; white-space: nowrap; justify-self: start; }
+.ph { background: repeating-linear-gradient(45deg, var(--box) 0 6px, transparent 6px 12px); border: 1px dashed var(--box-line); display: grid; place-items: center; text-align: center; color: var(--slate); font-size: 12px; padding: 10px; }
+.lines { display: grid; gap: 6px; }
+.lines i { display: block; height: 7px; background: var(--box); border-radius: 2px; }
+.dash { display: grid; gap: 6px; }
+.dash li { list-style: none; position: relative; padding-left: 16px; font-family: var(--font); font-size: 13px; line-height: 1.45; }
+.dash li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--firuzeh); }
+.verify { font-family: var(--ui); font-size: 11.5px; font-weight: 700; color: var(--flag); background: var(--flag-bg); padding: 1px 6px; border-radius: 3px; }
 
-/* Site pieces */
-.sec { padding: 44px 40px; }
-body.phone .sec { padding: 32px 20px; }
-.label { font: 500 11px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-.sec h2 { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--ink); margin-bottom: 18px; }
-.btn { display: inline-block; font: 600 14px var(--font-body); padding: 11px 18px; border-radius: 6px; text-decoration: none; border: 0; cursor: pointer; }
-.btn.y { background: var(--yellow); color: #12305B; }
-.btn.o { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
-.hatch { background: repeating-linear-gradient(45deg, var(--hatch) 0 2px, transparent 2px 10px); border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; color: var(--muted); font: 500 12px var(--font-mono); text-align: center; padding: 10px; }
-
-.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 40px; background: #12305B; color: #fff; flex-wrap: wrap; }
-body.phone .nav { padding: 14px 20px; }
-.brand { font-family: var(--font-display); font-weight: 600; font-size: 19px; }
-.brand sup { font-size: 10px; }
-.navlinks { display: flex; gap: 22px; align-items: center; font-size: 14px; color: #D5E1F2; flex-wrap: wrap; }
-body.phone .navlinks a.l { display: none; }
-.burger { display: none; font: 500 12px var(--font-mono); color: #D5E1F2; }
-body.phone .burger { display: inline; }
-
-.hero { background: #12305B; color: #fff; padding: 56px 40px 64px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; align-items: center; }
-body.phone .hero { grid-template-columns: 1fr; padding: 36px 20px 44px; }
-.hero h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; }
-.hero h1 em { font-style: normal; box-shadow: inset 0 -0.28em 0 rgba(242,194,48,.55); }
-.hero p { color: #C9D7EC; margin: 16px 0 24px; max-width: 46ch; }
-.hero .where { font: 400 12px var(--font-mono); color: #9FB4D3; margin-top: 18px; letter-spacing: .04em; }
-.hero .hatch { aspect-ratio: 4/5; background-color: rgba(255,255,255,.04); border-color: rgba(255,255,255,.25); color: #9FB4D3; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.12) 0 2px, transparent 2px 10px); }
-body.phone .hero .hatch { aspect-ratio: 16/10; }
-
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-body.phone .cards { grid-template-columns: 1fr; }
-.card { border: 1px solid var(--line); border-top: 3px solid var(--yellow); border-radius: 0 0 8px 8px; padding: 18px; display: grid; gap: 10px; align-content: start; }
-.card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
-.card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
-.card a { font-size: 13px; color: var(--blue); font-weight: 600; text-decoration: none; }
-
-.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--navy); }
+/* Section layouts (mirror the site) */
+.hdr { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.hdr .brand { font-family: var(--font); font-weight: 600; font-size: 15px; }
+.hdr nav { margin-left: auto; display: flex; gap: 16px; font-family: var(--font); font-weight: 600; font-size: 13px; }
+body.phone .hdr { justify-content: space-between; }
+body.phone .hdr nav { order: 3; margin-left: 0; width: 100%; justify-content: space-between; gap: 6px; }
+.hero-b { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 28px; align-items: start; }
+.hero-b .ph { aspect-ratio: 4 / 5; }
+body.phone .hero-b { grid-template-columns: 1fr; }
+body.phone .hero-b .ph { max-width: 220px; }
+.hero-t { display: grid; gap: 18px; justify-items: start; }
+.who-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 10px 28px; }
+body.phone .who-row { grid-template-columns: 1fr; }
+.who-l { display: grid; gap: 8px; align-content: start; }
+.rows { display: grid; gap: 30px; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+.steps li { list-style: none; counter-increment: s; display: grid; gap: 4px; align-content: start; }
+.steps li::before { content: counter(s); font-family: var(--font); font-weight: 600; font-size: 20px; color: var(--firuzeh); }
 body.phone .steps { grid-template-columns: 1fr; }
-:root[data-theme="dark"] .steps { border-color: var(--blue); }
-.step { padding: 16px 16px 4px 0; display: grid; gap: 6px; align-content: start; }
-.step .n { font: 500 12px var(--font-mono); color: var(--blue); }
-.step h3 { font-size: 16px; font-weight: 600; }
-.step p { margin: 0; color: var(--muted); font-size: 14px; }
-
-.sky { background: var(--sky); }
-.grid6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-body.phone .grid6 { grid-template-columns: 1fr; }
-.grid6 div { background: var(--white); padding: 16px; display: grid; gap: 4px; }
-.grid6 h3 { font-size: 15px; font-weight: 600; }
-.grid6 p { margin: 0; font-size: 13.5px; color: var(--muted); }
-
-.about { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; align-items: start; }
-body.phone .about { grid-template-columns: 1fr; }
-.about .hatch { aspect-ratio: 1; }
-.about p { margin: 0 0 12px; max-width: 62ch; }
-.facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-.facts span { font-size: 12.5px; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--muted); }
-
-.creds { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between; padding: 22px 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-body.phone .creds { padding: 20px; }
-.creds div { display: grid; gap: 2px; }
-.creds b { font-family: var(--font-display); font-size: 17px; font-weight: 600; }
-.creds small { color: var(--muted); font-size: 12px; }
-
-.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
-body.phone .contact { grid-template-columns: 1fr; }
-.field { display: grid; gap: 4px; margin-bottom: 12px; }
-.field label { font-size: 12.5px; font-weight: 600; }
-.field input, .field select, .field textarea { font: 400 14px var(--font-body); padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--white); color: var(--ink); width: 100%; }
-.direct { display: grid; gap: 14px; align-content: start; }
-.direct div { display: grid; gap: 2px; }
-.direct small { font: 500 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.direct span { font-size: 15px; }
-
-.foot { background: #0C2246; color: #B7C7DE; padding: 32px 40px; font-size: 12px; display: grid; gap: 12px; }
-body.phone .foot { padding: 28px 20px; }
-.foot .brand { color: #fff; font-size: 16px; }
-.foot .crn { display: inline-block; background: var(--yellow); color: #12305B; font: 600 11px var(--font-mono); padding: 2px 8px; border-radius: 4px; }
-.foot p { margin: 0; max-width: 90ch; }
+.about-b { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 28px; align-items: start; }
+.about-b > .ph { aspect-ratio: 1; }
+body.phone .about-b { grid-template-columns: 1fr; }
+body.phone .about-b > .ph { max-width: 200px; }
+.about-r { display: grid; gap: 12px; }
+.quote { font-family: var(--font); font-size: 15px; line-height: 1.4; border-left: 2px solid var(--firuzeh); padding-left: 12px; }
+.contact-b { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 28px; align-items: start; }
+body.phone .contact-b { grid-template-columns: 1fr; }
+.dl { display: grid; gap: 6px; font-size: 13px; }
+.dl div { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 8px; }
+.dl dt { color: var(--slate); font-family: var(--font); }
+.dl dd { margin: 0; font-family: var(--font); color: var(--firuzeh); overflow-wrap: anywhere; }
+.cal { height: 260px; }
+.foot { display: grid; gap: 10px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: var(--font); font-weight: 600; font-size: 13px; }
+.foot p { font-family: var(--font); color: var(--slate); font-size: 11.5px; line-height: 1.55; }
+.pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+body.phone .pages, .pages.stack { grid-template-columns: 1fr; }
+.mini { border: 1px solid var(--box-line); background: var(--paper); padding: 18px; display: grid; gap: 10px; justify-items: start; border-radius: 6px; }
 
 @media (max-width: 900px) {
   .row { grid-template-columns: 1fr; gap: 0; }
-  .note { margin: 0 0 18px; order: 2; }
-  .row .site { border: 1px solid var(--line) !important; border-radius: 12px !important; overflow: hidden; margin-top: 18px; }
-  body:not(.phone) .sec, body:not(.phone) .hero, body:not(.phone) .nav, body:not(.phone) .creds, body:not(.phone) .foot { padding-left: 20px; padding-right: 20px; }
-  body:not(.phone) .hero, body:not(.phone) .about, body:not(.phone) .contact { grid-template-columns: 1fr; }
-  body:not(.phone) .cards, body:not(.phone) .grid6 { grid-template-columns: 1fr; }
+  .note { margin: 0 0 14px; order: 2; }
+  .row .site { border: 1px solid var(--box-line) !important; border-radius: 10px !important; margin-top: 14px; }
+  body:not(.phone) .site { padding: 22px 18px; }
+  body:not(.phone) .hero-b, body:not(.phone) .who-row, body:not(.phone) .about-b, body:not(.phone) .contact-b { grid-template-columns: 1fr; }
   body:not(.phone) .steps { grid-template-columns: 1fr 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .site { transition: none; } }
@@ -164,17 +117,16 @@ body.phone .foot { padding: 28px 20px; }
 <div class="wrap">
   <header class="top">
     <div>
-      <h1>advisorpouya.com, wireframe v1</h1>
-      <p>Structure and draft copy only. Yellow notes on the right explain each section and list what's still open. Nothing here is final copy.</p>
+      <h1>advisorpouya.com, wireframe v2</h1>
+      <p>Matches the current build (Ink, Paper, Firuzeh, Literata). Real copy where it's short, grey bars where it's long. Notes on the right say what each section does and what's still open.</p>
     </div>
     <div class="controls">
       <div class="swatches" aria-label="Palette">
-        <span class="sw" style="background:#12305B" title="Navy #12305B"></span>
-        <span class="sw" style="background:#1F5FAE" title="Blue #1F5FAE"></span>
-        <span class="sw" style="background:#FFFFFF" title="White"></span>
-        <span class="sw" style="background:#EAF1FA" title="Light blue #EAF1FA"></span>
-        <span class="sw" style="background:#F2C230" title="Yellow #F2C230"></span>
-        <span>blue / white / yellow</span>
+        <span class="sw" style="background:#1E2A36" title="Ink #1E2A36"></span>
+        <span class="sw" style="background:#F6F7F5" title="Paper #F6F7F5"></span>
+        <span class="sw" style="background:#13706F" title="Firuzeh #13706F"></span>
+        <span class="sw" style="background:#5B6670" title="Slate #5B6670"></span>
+        <span>Ink · Paper · Firuzeh · Slate</span>
       </div>
       <div class="toggle" role="group" aria-label="Preview width">
         <button id="vDesk" type="button" aria-pressed="true">Desktop</button>
@@ -183,205 +135,160 @@ body.phone .foot { padding: 28px 20px; }
     </div>
   </header>
 
-  <main class="board">
-
-    <!-- 1 NAV -->
+  <main>
     <section class="row">
       <div class="frame-col"><div class="site">
-        <div class="chrome"><i></i><i></i><i></i><span>advisorpouya.com</span></div>
-        <nav class="nav">
-          <div class="brand">Pouya Jalili, CPFA<sup>®</sup></div>
-          <div class="navlinks">
-            <a class="l">Who I help</a><a class="l">How I work</a><a class="l">About</a><a class="l">Contact</a>
-            <span class="btn y">Book a 20-min call</span>
-            <span class="burger">☰ menu</span>
-          </div>
-        </nav>
-      </div></div>
-      <aside class="note"><b class="tag">1 · Nav</b>
-        Sticky. Navy bar, yellow is reserved for the one action we want: booking a call.
-        <ul><li>On phones the links collapse into a menu; the Book button stays visible.</li>
-        <li class="open">Open: booking link. Calendly, Microsoft Bookings, or the contact form?</li></ul>
-      </aside>
-    </section>
-
-    <!-- 2 HERO -->
-    <section class="row">
-      <div class="frame-col"><div class="site">
-        <div class="hero">
-          <div>
-            <h1>My family came here in the '90s with $1,000. Now I help people get the <em>early money decisions</em> right.</h1>
-            <p>Financial advisor in Greater Boston for tech employees, young professionals, and small business owners. Equity comp, retirement, insurance, and tax-aware planning.</p>
-            <span class="btn y">Book a 20-min call</span>&nbsp; <span class="btn o" style="color:#D5E1F2;border-color:#7FA3D6">See who I work with</span>
-            <div class="where">SOUTHBOROUGH · NEWTON · GREATER BOSTON</div>
-          </div>
-          <div class="hatch">Headshot<br>(real photo, not stock)</div>
+        <div class="hdr">
+          <span class="brand">Pouya Jalili, CPFA<sup style="font-size:.6em">®</sup></span>
+          <nav><span>Who I help</span><span>How I work</span><span>About</span><span>Contact</span></nav>
+          <span class="btn">Book a call</span>
         </div>
       </div></div>
-      <aside class="note"><b class="tag">2 · Hero</b>
-        Your LinkedIn origin story leads, credentials come later. That's what makes this different from every other advisor site.
-        <ul><li>Yellow underline marks the one phrase that matters.</li>
-        <li>Sized to content, not full screen, so the next section peeks in.</li>
-        <li class="open">Open: a professional headshot. Do you have a recent one?</li></ul>
+      <aside class="note"><span class="tag">1 · Header</span>
+        <ul><li>Brand, four links, one button. Sticky on desktop; on phones the links drop to a second row.</li>
+        <li>Book a call jumps to Contact and moves keyboard focus to its heading.</li>
+        <li class="open">Pending: Public Sans for nav and buttons so the page reads less like a newsletter.</li></ul>
       </aside>
     </section>
 
-    <!-- 3 WHO I HELP -->
     <section class="row">
       <div class="frame-col"><div class="site">
-        <div class="sec" id="who">
-          <div class="label">Who I help</div>
-          <h2>You probably recognize one of these</h2>
-          <div class="cards">
-            <div class="card"><h3>Tech employees</h3>
-              <ul><li>RSUs vest and you're not sure whether to sell</li><li>ISOs and AMT you'd rather not learn about in April</li><li>Too much of your net worth in one company</li></ul>
-              <a>Equity comp planning →</a></div>
-            <div class="card"><h3>Young professionals &amp; physicians</h3>
-              <ul><li>First real income and no plan for it yet</li><li>401(k), Roth, HSA: which first?</li><li>Disability and life coverage before you need it</li></ul>
-              <a>Getting started →</a></div>
-            <div class="card"><h3>Small business owners</h3>
-              <ul><li>Want a 401(k) but don't want to run it</li><li>Your own retirement is an afterthought</li><li>No plan for what happens to the business</li></ul>
-              <a>Business owner planning →</a></div>
+        <div class="w-h1">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</div>
+        <div class="hero-b">
+          <div class="hero-t">
+            <p class="w-p slate">Financial advisor in Greater Boston for tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
+            <span class="btn">Book a call</span>
           </div>
+          <div class="ph">Hero photo<br>4:5 crop</div>
         </div>
       </div></div>
-      <aside class="note"><b class="tag">3 · Who I help</b>
-        Pain points in the client's words, Sandler-style. No product names.
-        <ul><li>Each "→" link scrolls to the matching service below for now. Later each can become its own page.</li>
-        <li class="open">Open: keep physicians in card 2, or give them their own card?</li></ul>
+      <aside class="note"><span class="tag">2 · Hero</span>
+        <ul><li>Headline spans the full width at 22ch: 4 lines on desktop and tablet, 6 on a 360px phone.</li>
+        <li>48px from headline to supporting line. The h1 is the LCP element (about 0.4s throttled).</li>
+        <li class="open">Open: hero photo alt text from you.</li></ul>
       </aside>
     </section>
 
-    <!-- 4 HOW I WORK -->
     <section class="row">
       <div class="frame-col"><div class="site">
-        <div class="sec sky">
-          <div class="label">How I work</div>
-          <h2>It starts with a conversation</h2>
-          <div class="steps">
-            <div class="step"><span class="n">Step 1</span><h3>Talk</h3><p>20 minutes on what's on your mind. No prep needed.</p></div>
-            <div class="step"><span class="n">Step 2</span><h3>Plan</h3><p>We map goals, accounts, and coverage into one picture.</p></div>
-            <div class="step"><span class="n">Step 3</span><h3>Put it in place</h3><p>Open accounts, adjust coverage, set the savings.</p></div>
-            <div class="step"><span class="n">Step 4</span><h3>Review</h3><p>Check in as your life and pay change.</p></div>
+        <div class="w-h2">You probably recognize one of these</div>
+        <div class="rows">
+          <div class="who-row">
+            <div class="who-l"><div class="w-h3">Tech and biotech employees</div><p class="w-p">Your stock vests faster than you can decide what to do with it. You work in Kendall Square or along 128, and so does most of your net worth.</p></div>
+            <ul class="dash"><li>Sell or hold RSUs when they vest</li><li>When to exercise ISOs, and how much AMT that triggers</li><li>Whether to buy ESPP shares, and when to sell them</li><li>Concentrated stock before or after a liquidity event</li><li>Life coverage sized to a young family</li></ul>
           </div>
-        </div>
-      </div></div>
-      <aside class="note"><b class="tag">4 · How I work</b>
-        A real sequence, so numbered steps fit here. The steps condense the Baystate process from your 2025 client kit.
-        <ul><li>Light blue band to break up the white.</li>
-        <li class="open">Open: say how often reviews happen (annual?) or keep it general?</li></ul>
-      </aside>
-    </section>
-
-    <!-- 5 SERVICES -->
-    <section class="row">
-      <div class="frame-col"><div class="site">
-        <div class="sec" id="services">
-          <div class="label">What we cover</div>
-          <h2>Planning areas</h2>
-          <div class="grid6">
-            <div><h3>Equity compensation</h3><p>RSUs, ISOs, NSOs, ESPP, and when to sell.</p></div>
-            <div><h3>Retirement planning</h3><p>How much, which accounts, and in what order.</p></div>
-            <div><h3>401(k) &amp; PEP for businesses</h3><p>Plan setup and design for small employers.</p></div>
-            <div><h3>Insurance design</h3><p>Life and disability coverage sized to your situation.</p></div>
-            <div><h3>Tax-aware planning</h3><p>Coordinating decisions with your tax picture.</p></div>
-            <div><h3>Education funding</h3><p>529s and other ways to save for school.</p></div>
+          <div class="who-row">
+            <div class="who-l"><div class="w-h3">Physicians, residency through attending</div><p class="w-p">You started earning late and the decisions came all at once. Resident at a Boston teaching hospital or attending a few years out.</p></div>
+            <ul class="dash"><li>Own-occupation disability sized to your specialty</li><li>Student loans versus saving for retirement</li><li>Order to fund 401(k)/403(b), Roth IRA and HSA</li><li>The income jump after training</li></ul>
           </div>
-        </div>
-      </div></div>
-      <aside class="note"><b class="tag">5 · Services</b>
-        Six tiles, short descriptions, no numbers or returns.
-        <ul><li>"Tax-aware" rather than "tax planning" so it doesn't read as tax advice.</li>
-        <li class="open">Open: anything to add or cut? Estate/legacy is a candidate.</li></ul>
-      </aside>
-    </section>
-
-    <!-- 6 ABOUT -->
-    <section class="row">
-      <div class="frame-col"><div class="site">
-        <div class="sec" id="about">
-          <div class="label">About</div>
-          <div class="about">
-            <div class="hatch">Candid photo<br>(Rosie optional)</div>
-            <div>
-              <h2>Why I do this</h2>
-              <p>I come from a family of engineers, scientists, and doctors. I started in aerospace engineering at Alabama and switched to finance and real estate. Most people my age don't have someone in their corner for the money decisions that matter early on. I try to be that person.</p>
-              <p>I'm based in Southborough with Baystate Financial and live in Newton with my Corgi, Rosie. When I'm not working, I'm usually running.</p>
-              <div class="facts"><span>Persian, native</span><span>Spanish, limited working</span><span>BS Finance &amp; Real Estate, Univ. of Alabama</span></div>
+          <div class="who-row">
+            <div class="who-l"><div class="w-h3">Small business owners</div><p class="w-p">Your own plan keeps getting pushed. 5 to 50 people in MetroWest, no plan or one nobody has looked at in years.</p></div>
+            <div style="display:grid;gap:10px">
+              <ul class="dash"><li>Standalone 401(k) versus a pooled employer plan</li><li>Plan design: eligibility, match, safe harbor</li><li>Small-employer startup tax credits</li><li>Your own retirement and what happens to the business</li><li>Buy-sell and key person coverage</li></ul>
+              <p class="w-p slate">I hold the CPFA® designation, which covers the fiduciary responsibilities a plan sponsor takes on. <span class="verify">VERIFY</span></p>
             </div>
           </div>
         </div>
       </div></div>
-      <aside class="note"><b class="tag">6 · About</b>
-        Draws on your LinkedIn summary and client kit bio. Personal details make it real.
-        <ul><li>Languages listed: Persian is a real draw in Greater Boston.</li>
-        <li class="open">Open: confirm you're fine with Newton and Rosie on a public site.</li></ul>
+      <aside class="note"><span class="tag">3 · Who I help</span>
+        <ul><li>Three rows, no cards, no links. Spacing separates them, not rules.</li>
+        <li>Each row: audience, situation (Boston line), then the decisions.</li>
+        <li class="open">Decision counts are 5 / 4 / 5 after the insurance items. Spec said four. Cut one from tech and business, or keep?</li>
+        <li class="open">VERIFY: firm-approved CPFA® wording.</li></ul>
       </aside>
     </section>
 
-    <!-- 7 CREDENTIALS -->
     <section class="row">
       <div class="frame-col"><div class="site">
-        <div class="creds">
-          <div><b>CPFA®</b><small>Certified Plan Fiduciary Advisor</small></div>
-          <div><b>Baystate Financial</b><small>Southborough office</small></div>
-          <div><b>Univ. of Alabama</b><small>BS Finance &amp; Real Estate</small></div>
-          <div><b>Licensed in</b><small>Insurance: 17 states · Securities: 7 states</small></div>
-        </div>
+        <div class="w-h2">It starts with a conversation</div>
+        <ol class="steps">
+          <li><span class="w-h3">Talk</span><span class="w-p slate">Thirty minutes on the thing that's bugging you. No forms, no prep.</span></li>
+          <li><span class="w-h3">Plan</span><span class="w-p slate">Pay, equity, accounts and coverage in one picture.</span></li>
+          <li><span class="w-h3">Put it in place</span><span class="w-p slate">Open accounts, change coverage, set up savings.</span></li>
+          <li><span class="w-h3">Review</span><span class="w-p slate">Check in when job, pay or family changes.</span></li>
+        </ol>
+        <p class="w-p"><strong>How I get paid:</strong> <span class="verify">VERIFY: fee-based planning plus commissions wording</span></p>
       </div></div>
-      <aside class="note"><b class="tag">7 · Credentials strip</b>
-        Proof without a brag wall. State lists live in the footer in full.
-        <ul><li>Counts come from your LinkedIn PDF (MA, TX, PA, UT, AL, CA, MD, FL, CT, TN, ME, IL, GA, NJ, WV, NC, RI / MA, ME, NY, MO, RI, NH, CA).</li>
-        <li class="open">Open: confirm the state lists are current. LinkedIn can lag your actual licenses.</li></ul>
+      <aside class="note"><span class="tag">4 · How I work</span>
+        <ul><li>The only numbered list on the page, because it's the only real sequence.</li>
+        <li class="open">VERIFY: "How I get paid" wording from you.</li></ul>
       </aside>
     </section>
 
-    <!-- 8 CONTACT -->
     <section class="row">
       <div class="frame-col"><div class="site">
-        <div class="sec sky" id="contact">
-          <div class="label">Contact</div>
-          <h2>Let's talk</h2>
-          <div class="contact">
-            <form onsubmit="event.preventDefault()">
-              <div class="field"><label for="f-name">Name</label><input id="f-name" value="Alex Example"></div>
-              <div class="field"><label for="f-email">Email</label><input id="f-email" value="alex@example.com"></div>
-              <div class="field"><label for="f-topic">What's on your mind?</label>
-                <select id="f-topic"><option>Equity comp (RSUs, options)</option><option>Retirement planning</option><option>401(k) for my business</option><option>Insurance</option><option>Something else</option></select></div>
-              <span class="btn y">Send</span>
-            </form>
-            <div class="direct">
-              <div><small>Text</small><span>617-544-2879</span></div>
-              <div><small>Office</small><span>774-843-4919</span></div>
-              <div><small>Email</small><span>pjalili@baystatefinancial.com</span></div>
-              <div><small>Office address</small><span>134 Turnpike Road, Suite 300<br>Southborough, MA 01772</span></div>
-            </div>
+        <div class="about-b">
+          <div class="ph">About photo<br>square crop</div>
+          <div class="about-r">
+            <div class="w-h2">Why I do this</div>
+            <p class="quote">Most people my age don't have someone in their corner for the financial decisions that matter early on. I try to be that person.</p>
+            <div class="lines"><i></i><i></i><i style="width:70%"></i></div>
+            <p class="w-p slate">$1,000 story · parents' PhDs (UConn, Clemson) · aerospace to finance · engineers' kids line · Newton, Rosie, running · Persian, Spanish</p>
+            <div class="w-h3" style="font-size:14px">Where you'll find me</div>
+            <ul class="dash"><li>YoPro chair, Marlborough Regional Chamber</li><li>Charles River Regional Chamber</li><li>Chair, Commonwealth Business Circle</li></ul>
           </div>
         </div>
       </div></div>
-      <aside class="note"><b class="tag">8 · Contact</b>
-        Short form plus direct lines. The topic dropdown tells you which conversation to prep.
-        <ul><li>Numbers and address are from your client kit.</li>
-        <li class="open">Open: where form submissions go (Formspree, firm email, CRM). For the local build it's a placeholder.</li></ul>
+      <aside class="note"><span class="tag">5 · About</span>
+        <ul><li>Photo left, story right. The quote has a thin Firuzeh rule, the only accent in this section.</li>
+        <li class="open">Open: a second, more candid About photo. Right now it's a crop of the headshot.</li></ul>
       </aside>
     </section>
 
-    <!-- 9 FOOTER -->
     <section class="row">
       <div class="frame-col"><div class="site">
-        <footer class="foot">
-          <div class="brand">Pouya Jalili, CPFA®</div>
+        <div class="w-h2">Let's talk</div>
+        <div class="contact-b">
+          <div style="display:grid;gap:12px">
+            <p class="w-p">Pick a time for a 30-minute call.</p>
+            <dl class="dl">
+              <div><dt>Text</dt><dd>617-544-2879</dd></div>
+              <div><dt>Office</dt><dd>774-843-4919</dd></div>
+              <div><dt>Email</dt><dd>pjalili@baystatefinancial.com</dd></div>
+              <div><dt>Address</dt><dd style="color:var(--ink)">134 Turnpike Rd, Ste 300, Southborough</dd></div>
+              <div><dt>Instagram</dt><dd>@advisorpouya</dd></div>
+              <div><dt>LinkedIn</dt><dd>Pouya Jalili, CPFA®</dd></div>
+            </dl>
+            <p class="w-p slate">Not ready to talk yet? <span style="color:var(--firuzeh)">Try my goal calculator</span> first.</p>
+          </div>
+          <div style="display:grid;gap:8px">
+            <div class="ph cal">Calendly inline embed<br>loads as Contact nears view<br>8s fallback: "Scheduling didn't load. Text or email."</div>
+            <p class="w-p slate" style="font-size:12px">Please don't include account numbers or other sensitive information when you book.</p>
+          </div>
+        </div>
+      </div></div>
+      <aside class="note"><span class="tag">6 · Contact</span>
+        <ul><li>Calendar is the primary action. No form anywhere on the site.</li>
+        <li class="open">Set in Calendly: redirect after booking to advisorpouya.com/call-booked/ with event details off.</li></ul>
+      </aside>
+    </section>
+
+    <section class="row">
+      <div class="frame-col"><div class="site">
+        <div class="foot">
+          <nav><span>Who I help</span><span>How I work</span><span>About</span><span>Contact</span><span>Instagram</span><span>LinkedIn</span></nav>
           <p>Pouya Jalili is a registered representative of and offers securities and investment advisory services through MML Investors Services, LLC, Member SIPC. Supervisory address: 1 Marina Park Drive, 16th Floor, Boston, MA 02210, 617-585-4500.</p>
-          <p>Licensed to sell insurance in: MA, TX, PA, UT, AL, CA, MD, FL, CT, TN, ME, IL, GA, NJ, WV, NC, RI. Securities in: MA, ME, NY, MO, RI, NH, CA.</p>
-          <p><span class="crn">CRN placeholder</span> &nbsp; baystatefinancial.com · sipc.org</p>
-        </footer>
+          <p>Licensed to sell insurance in: MA, TX, PA, UT, AL, CA, MD, FL, CT, TN, ME, IL, GA, NJ, WV, NC, RI. Licensed to offer securities in: MA, ME, NY, MO, RI, NH, CA.</p>
+        </div>
       </div></div>
-      <aside class="note"><b class="tag">9 · Footer</b>
-        Disclosure text taken from your LinkedIn summary.
-        <ul><li class="open">Needs the final approved CRN and disclosure wording before go-live.</li></ul>
+      <aside class="note"><span class="tag">7 · Footer</span>
+        <ul><li>Disclosure and license lists are frozen word for word. Slate on Paper, 5.46:1.</li>
+        <li class="open">Open: whether a tax/legal disclaimer is needed, and where.</li></ul>
       </aside>
     </section>
 
+    <section class="row">
+      <div class="frame-col"><div class="site">
+        <div class="pages">
+          <div class="mini"><div class="w-h2">Call booked</div><p class="w-p slate">Your call is booked. Calendly is sending a calendar invite to the email you entered.</p><span class="w-p" style="color:var(--firuzeh)">Back to the home page</span></div>
+          <div class="mini"><div class="w-h2">That page doesn't exist.</div><p class="w-p slate">The link may be old or mistyped. Everything is on the home page.</p><span class="btn">Go to the home page</span></div>
+        </div>
+      </div></div>
+      <aside class="note"><span class="tag">8 · Other pages</span>
+        <ul><li>/call-booked/ reads no URL parameters and runs no script.</li>
+        <li>404.html needs a host that serves it automatically.</li></ul>
+      </aside>
+    </section>
   </main>
 </div>
 
@@ -391,9 +298,9 @@ body.phone .foot { padding: 28px 20px; }
     document.body.classList.toggle('phone', p);
     desk.setAttribute('aria-pressed', String(!p));
     phone.setAttribute('aria-pressed', String(p));
-    try { localStorage.setItem('wf-view', p ? 'phone' : 'desk'); } catch (e) {}
+    try { localStorage.setItem('wf2-view', p ? 'phone' : 'desk'); } catch (e) {}
   }
   desk.addEventListener('click', () => setView(false));
   phone.addEventListener('click', () => setView(true));
-  try { if (localStorage.getItem('wf-view') === 'phone') setView(true); } catch (e) {}
+  try { if (localStorage.getItem('wf2-view') === 'phone') setView(true); } catch (e) {}
 </script>
