@@ -29,7 +29,8 @@
 <!-- The h1 is the LCP element, so its font is preloaded. -->
 <link rel="preload" href="fonts/literata-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/publicsans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/pouya-hero-800.webp" imagesrcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" imagesizes="(max-width: 900px) 320px, 440px" type="image/webp">
+<link rel="preload" as="image" href="assets/hero-wide-1600.webp" imagesrcset="assets/hero-wide-1600.webp 1600w, assets/hero-wide-2400.webp 2400w" imagesizes="100vw" type="image/webp" media="(min-width: 901px)">
+<link rel="preload" as="image" href="assets/pouya-hero-800.webp" imagesrcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" imagesizes="100vw" type="image/webp" media="(max-width: 900px)">
 
 <script type="application/ld+json">
 {
@@ -160,17 +161,17 @@
 
 @layer components {
   /* ---------- Header: dark over the hero, light once you scroll past it ---------- */
-  .site-header { position: sticky; top: 0; z-index: 30; background: var(--ink); color: var(--on-dark); transition: background .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease); padding-top: env(safe-area-inset-top, 0px); }
-  .site-header.light { background: rgba(246, 247, 245, .88); color: var(--ink); box-shadow: 0 1px 0 var(--line), 0 6px 20px rgba(30, 42, 54, .06); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); }
+  .site-header { position: sticky; top: 0; z-index: 30; background: linear-gradient(rgba(20, 30, 40, .55), rgba(20, 30, 40, 0)); color: var(--on-dark); transition: background .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease); padding-top: env(safe-area-inset-top, 0px); }
+  .site-header.light { background: rgba(30, 42, 54, .94); color: var(--on-dark); box-shadow: 0 6px 24px rgba(10, 18, 26, .25); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); }
   .site-header .wrap { display: flex; align-items: center; gap: var(--s5); min-height: var(--header-h); }
   .brand { color: inherit; text-decoration: none; font-family: var(--display); font-size: 1.25rem; font-weight: 600; font-variation-settings: "opsz" 24; display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; letter-spacing: -0.01em; }
   .site-header nav { margin-left: auto; }
   .site-header nav ul { display: flex; gap: var(--s1); }
   .nav-link { position: relative; color: inherit; text-decoration: none; font-size: .9375rem; font-weight: 500; display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--s3); border-radius: var(--r-pill); transition: background .2s var(--ease); }
   .nav-link:hover { background: rgba(124, 200, 191, .14); }
-  .site-header.light .nav-link:hover { background: var(--mist); }
+  .site-header.light .nav-link:hover { background: rgba(124, 200, 191, .14); }
   .nav-link[aria-current="true"]::after { content: ""; position: absolute; left: var(--s3); right: var(--s3); bottom: 8px; height: 2px; background: var(--firuzeh-light); border-radius: 2px; }
-  .site-header.light .nav-link[aria-current="true"]::after { background: var(--firuzeh); }
+
   @media (max-width: 860px) {
     .site-header nav { display: none; }
     .site-header .wrap { justify-content: space-between; gap: var(--s3); }
@@ -189,34 +190,42 @@
   .btn-light { background: var(--paper); color: var(--ink); }
   .btn-light:hover { background: var(--white); box-shadow: 0 6px 20px rgba(10, 40, 40, .25); }
   .site-header .btn { min-height: 44px; padding: var(--s2) var(--s4); font-size: .9375rem; }
-  .site-header:not(.light) .btn { background: var(--firuzeh-light); color: var(--ink); }
-  .site-header:not(.light) .btn:focus-visible { outline-color: var(--paper); }
+  .site-header .btn { background: var(--firuzeh-light); color: var(--ink); }
+  .site-header .btn:hover { background: #95D4CC; }
+  .site-header .btn:focus-visible { outline-color: var(--paper); }
 
-  /* ---------- Hero ---------- */
-  .hero { position: relative; background: var(--ink); color: var(--on-dark); overflow: hidden; isolation: isolate; }
-  .hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: 70vw; height: 70vw; max-width: 900px; max-height: 900px; background: radial-gradient(closest-side, rgba(19, 112, 111, .55), rgba(19, 112, 111, 0)); z-index: -1; pointer-events: none; }
-  .hero .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s8); align-items: center; padding-block: var(--s8) var(--s9); }
-  .hero-text { display: grid; gap: var(--s6); justify-items: start; }
+  /* ---------- Hero: full-bleed photo under an Ink wash ---------- */
+  .hero { position: relative; background: var(--ink); color: var(--on-dark); overflow: hidden; isolation: isolate; margin-top: calc(var(--header-h) * -1); }
+  .hero-media { position: absolute; inset: 0; z-index: -2; }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 25%; }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background:
+      linear-gradient(90deg, rgba(30, 42, 54, .97) 0%, rgba(30, 42, 54, .92) 36%, rgba(30, 42, 54, .5) 58%, rgba(30, 42, 54, .04) 80%),
+      linear-gradient(0deg, rgba(30, 42, 54, .55), rgba(30, 42, 54, 0) 30%); }
+  .hero .wrap { min-height: min(92vh, 860px); display: grid; align-items: center; padding-block: calc(var(--header-h) + var(--s8)) var(--s9); }
+  .hero-text { display: grid; gap: var(--s6); justify-items: start; max-width: 640px; }
   .kicker { display: inline-flex; align-items: center; gap: var(--s2); font-size: .9375rem; font-weight: 600; color: var(--firuzeh-light); }
   .kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--firuzeh-light); box-shadow: 0 0 0 4px rgba(124, 200, 191, .2); }
-  .hero h1 { font-family: var(--display); color: var(--on-dark); font-size: clamp(2.375rem, 4vw + 1rem, 4.25rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 17ch; }
+  .hero h1 { font-family: var(--display); color: var(--on-dark); font-size: clamp(2.375rem, 3.6vw + 1rem, 4rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 17ch; }
   .hero .support { font-size: clamp(1.125rem, .5vw + 1rem, 1.25rem); line-height: 1.55; color: var(--on-dark-muted); max-width: 42ch; }
   .picker { display: grid; gap: var(--s3); }
   .picker-label { font-size: .875rem; font-weight: 600; color: var(--on-dark-muted); }
   .picker-options { display: flex; flex-wrap: wrap; gap: var(--s2); }
-  .chip { display: inline-flex; align-items: center; min-height: 44px; padding: var(--s2) var(--s4); border-radius: var(--r-pill); border: 1px solid rgba(246, 247, 245, .28); color: var(--on-dark); font-size: .9375rem; font-weight: 500; text-decoration: none; transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
-  .chip:hover { background: rgba(124, 200, 191, .16); border-color: var(--firuzeh-light); transform: translateY(-1px); text-decoration: none; }
+  .chip { display: inline-flex; align-items: center; min-height: 44px; padding: var(--s2) var(--s4); border-radius: var(--r-pill); border: 1px solid rgba(246, 247, 245, .32); background: rgba(30, 42, 54, .35); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: var(--on-dark); font-size: .9375rem; font-weight: 500; text-decoration: none; transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
+  .chip:hover { background: rgba(124, 200, 191, .2); border-color: var(--firuzeh-light); transform: translateY(-1px); text-decoration: none; }
   .chip:focus-visible { outline-color: var(--paper); }
   .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4) var(--s5); }
   .creds { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); font-size: .875rem; color: var(--on-dark-muted); }
   .creds li { display: inline-block; }
   .creds li + li::before { content: ""; display: inline-block; vertical-align: middle; width: 4px; height: 4px; border-radius: 50%; background: var(--firuzeh-light); margin: -2px var(--s3) 0 0; }
-  .portrait { position: relative; justify-self: end; width: calc(100% - var(--s5)); max-width: 440px; margin: 0 var(--s5) var(--s5) 0; }
-  .portrait::before { content: ""; position: absolute; inset: var(--s5) calc(var(--s5) * -1) calc(var(--s5) * -1) var(--s5); border: 2px solid var(--firuzeh-light); border-radius: var(--r-lg); }
-  .portrait img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-lg); box-shadow: 0 30px 60px rgba(0, 0, 0, .35); }
+  .scroll-cue { position: absolute; left: 50%; bottom: var(--s5); translate: -50% 0; width: 26px; height: 40px; border: 2px solid rgba(246, 247, 245, .45); border-radius: 14px; display: grid; justify-items: center; padding-top: 7px; }
+  .scroll-cue::before { content: ""; width: 4px; height: 8px; border-radius: 2px; background: var(--on-dark); animation: cue 1.8s var(--ease) infinite; }
+  @keyframes cue { 0% { opacity: 0; transform: translateY(-3px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(10px); } }
   @media (max-width: 900px) {
-    .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: var(--s7); padding-block: var(--s6) var(--s8); }
-    .portrait { justify-self: start; max-width: 320px; }
+    .hero-media { position: relative; inset: auto; display: block; height: min(118vw, 560px); }
+    .hero-media img { object-position: 50% 18%; }
+    .hero::after { inset: 0 0 auto 0; height: min(118vw, 560px); background: linear-gradient(0deg, var(--ink) 0%, rgba(30, 42, 54, .15) 45%, rgba(30, 42, 54, .45) 100%); }
+    .hero .wrap { min-height: 0; margin-top: calc(var(--s9) * -1); padding-block: 0 var(--s8); position: relative; }
+    .scroll-cue { display: none; }
   }
 
   /* ---------- Who I help: tabbed switcher ---------- */
@@ -288,6 +297,31 @@
   .findme li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--firuzeh); }
   @media (max-width: 900px) { .about .wrap { grid-template-columns: minmax(0, 1fr); } .about-photo { position: static; max-width: 320px; } }
 
+  /* ---------- FAQ: accordion ---------- */
+  .faq { background: var(--mist); }
+  .faq .wrap { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); align-items: start; }
+  .faq-head { display: grid; gap: var(--s4); position: sticky; top: calc(var(--header-h) + var(--s5)); }
+  .faq-head p { color: var(--slate); }
+  .faq-list { display: grid; gap: var(--s3); }
+  .faq details { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); transition: box-shadow .25s var(--ease), border-color .25s var(--ease); }
+  .faq details:hover { border-color: rgba(19, 112, 111, .35); }
+  .faq details[open] { box-shadow: var(--shadow-2); border-color: rgba(19, 112, 111, .35); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: var(--s4); min-height: 64px; padding: var(--s4) var(--s5); font-weight: 600; font-size: 1.0625rem; border-radius: var(--r-md); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--mist) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' stroke='%2313706F' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / 28px no-repeat; transition: transform .3s var(--ease), background-color .3s var(--ease); }
+  .faq details[open] summary::after { transform: rotate(45deg); background-color: #D3E6E2; }
+  .faq .answer { padding: 0 var(--s5) var(--s5); color: var(--slate); display: grid; gap: var(--s3); }
+  .faq details[open] .answer { animation: faq-in .35s var(--ease); }
+  @keyframes faq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 900px) { .faq .wrap { grid-template-columns: minmax(0, 1fr); } .faq-head { position: static; } }
+
+  /* ---------- Back to top ---------- */
+  .to-top { position: fixed; right: var(--gutter); bottom: calc(var(--s5) + env(safe-area-inset-bottom, 0px)); z-index: 35; width: 48px; height: 48px; border-radius: 50%; background: var(--ink); color: var(--on-dark); display: grid; place-items: center; box-shadow: var(--shadow-2); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .25s var(--ease), transform .25s var(--ease), background .2s var(--ease); }
+  .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+  .to-top:hover { background: var(--firuzeh); }
+  .to-top:focus-visible { outline: 2px solid var(--firuzeh); outline-offset: 2px; }
+  @media (max-width: 860px) { .to-top { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); } }
+
   /* ---------- Contact: Firuzeh band ---------- */
   .contact { background: var(--firuzeh); color: var(--on-dark); position: relative; overflow: hidden; isolation: isolate; }
   .contact::before { content: ""; position: absolute; left: -15%; bottom: -40%; width: 60vw; height: 60vw; max-width: 760px; max-height: 760px; background: radial-gradient(closest-side, rgba(124, 200, 191, .35), rgba(124, 200, 191, 0)); z-index: -1; pointer-events: none; }
@@ -312,14 +346,26 @@
   .sched-note { color: var(--on-firuzeh-muted); font-size: .875rem; }
   @media (max-width: 900px) { .contact .wrap { grid-template-columns: minmax(0, 1fr); } }
 
-  /* ---------- Footer ---------- */
-  .site-footer .wrap { display: grid; gap: var(--s5); padding-block: var(--s8) calc(var(--s8) + env(safe-area-inset-bottom, 0px)); }
-  .site-footer .brand { color: var(--ink); font-size: 1.125rem; }
-  .site-footer nav ul { display: flex; flex-wrap: wrap; gap: 0 var(--s1); margin-inline: calc(var(--s3) * -1); }
-  .site-footer .nav-link { color: var(--ink); }
-  .site-footer .nav-link:hover { background: var(--mist); }
-  .site-footer .disclosure { color: var(--slate); font-size: .875rem; line-height: 1.6; max-width: 95ch; }
-  .site-footer .disclosure a { color: var(--slate); }
+  /* ---------- Footer: Ink, three columns ---------- */
+  .site-footer { background: var(--ink); color: var(--on-dark); }
+  .site-footer .wrap { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 5fr); gap: var(--s7) var(--s8); padding-block: var(--s9) calc(var(--s8) + env(safe-area-inset-bottom, 0px)); align-items: start; }
+  .site-footer :focus-visible { outline-color: var(--paper); }
+  .foot-col { display: grid; gap: var(--s4); align-content: start; min-width: 0; }
+  .site-footer .brand { color: var(--on-dark); font-size: 1.25rem; }
+  .foot-title { font-size: .875rem; font-weight: 700; color: var(--firuzeh-light); }
+  .foot-lines { display: grid; gap: 0; }
+  .foot-lines a, .foot-lines span { display: inline-flex; align-items: center; min-height: 44px; color: var(--on-dark); text-decoration: none; overflow-wrap: anywhere; font-size: .9375rem; }
+  .foot-lines a:hover { text-decoration: underline; }
+  .foot-lines span { color: var(--on-dark-muted); min-height: 0; padding-block: var(--s2); line-height: 1.5; }
+  .site-footer nav ul { display: grid; gap: 0; }
+  .site-footer .nav-link { color: var(--on-dark); padding-inline: 0; border-radius: 0; font-size: .9375rem; }
+  .site-footer .nav-link:hover { background: none; color: var(--firuzeh-light); }
+  .site-footer .disclosure { color: var(--on-dark-muted); font-size: .875rem; line-height: 1.65; max-width: none; }
+  .site-footer .disclosure a { color: var(--on-dark); }
+  .foot-bottom { grid-column: 1 / -1; padding-right: 64px; border-top: 1px solid rgba(246, 247, 245, .12); padding-top: var(--s5); display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); justify-content: space-between; font-size: .875rem; color: var(--on-dark-muted); }
+  .foot-bottom a { color: var(--on-dark); display: inline-flex; align-items: center; min-height: 44px; }
+  @media (max-width: 900px) { .site-footer .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .foot-legal { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { .site-footer .wrap { grid-template-columns: minmax(0, 1fr); } }
 
   /* ---------- Phone: sticky booking bar ---------- */
   .mobile-cta { display: none; }
@@ -340,8 +386,14 @@
   .reveal-pending { opacity: 0; transform: translateY(18px); }
   .reveal-in { opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); }
   .panel.entering { animation: panel-in .45s var(--ease); }
+  /* Hero text rises in on load; photo settles */
+  .intro-1, .intro-2, .intro-3, .intro-4, .intro-5 { animation: rise .8s var(--ease) both; }
+  .intro-2 { animation-delay: .08s; } .intro-3 { animation-delay: .18s; } .intro-4 { animation-delay: .28s; } .intro-5 { animation-delay: .38s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hero-media img { animation: settle 1.6s var(--ease) both; }
+  @keyframes settle { from { transform: scale(1.04); } to { transform: none; } }
   @keyframes panel-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .reveal-pending { opacity: 1; transform: none; } .panel.entering { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal-pending { opacity: 1; transform: none; } .panel.entering, .intro-1, .intro-2, .intro-3, .intro-4, .intro-5, .hero-media img, .scroll-cue::before { animation: none; } }
 }
 </style>
 </head>
@@ -357,6 +409,7 @@
         <li><a class="nav-link" href="#who">Who I help</a></li>
         <li><a class="nav-link" href="#how">How I work</a></li>
         <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#faq">FAQ</a></li>
         <li><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -367,12 +420,18 @@
 <main id="main" tabindex="-1">
 
   <section class="hero on-dark" id="top" aria-labelledby="hero-h">
+    <picture class="hero-media">
+      <source media="(max-width: 900px)" type="image/webp" srcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" sizes="100vw">
+      <source media="(max-width: 900px)" srcset="assets/pouya-hero-480.jpg 480w, assets/pouya-hero-800.jpg 800w" sizes="100vw">
+      <source type="image/webp" srcset="assets/hero-wide-1600.webp 1600w, assets/hero-wide-2400.webp 2400w" sizes="100vw">
+      <img src="assets/hero-wide-1600.jpg" srcset="assets/hero-wide-1600.jpg 1600w, assets/hero-wide-2400.jpg 2400w" sizes="100vw" width="1600" height="711" fetchpriority="high" alt="Pouya Jalili smiling, wearing a dark suit and white tie in a glass-walled office">
+    </picture>
     <div class="wrap">
       <div class="hero-text">
-        <p class="kicker">Financial advisor in Greater Boston</p>
-        <h1 id="hero-h">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</h1>
-        <p class="support">For tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
-        <div class="picker">
+        <p class="kicker intro-1">Financial advisor in Greater Boston</p>
+        <h1 id="hero-h" class="intro-2">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</h1>
+        <p class="support intro-3">For tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
+        <div class="picker intro-4">
           <p class="picker-label" id="picker-label">Which sounds like you?</p>
           <div class="picker-options" role="group" aria-labelledby="picker-label">
             <a class="chip" href="#who" data-persona="tech">I have RSUs or stock options</a>
@@ -380,7 +439,7 @@
             <a class="chip" href="#who" data-persona="biz">I own a small business</a>
           </div>
         </div>
-        <div class="hero-cta">
+        <div class="hero-cta intro-5">
           <a class="btn btn-glow" href="#contact">Book a 30-min call</a>
           <ul class="creds" aria-label="Background">
             <li>CPFA<span class="reg">®</span></li>
@@ -389,13 +448,8 @@
           </ul>
         </div>
       </div>
-      <figure class="portrait">
-        <picture>
-          <source type="image/webp" srcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" sizes="(max-width: 900px) 320px, 440px">
-          <img src="assets/pouya-hero-800.jpg" srcset="assets/pouya-hero-480.jpg 480w, assets/pouya-hero-800.jpg 800w" sizes="(max-width: 900px) 320px, 440px" width="800" height="1000" fetchpriority="high" alt="Pouya Jalili smiling, wearing a dark suit and white tie in a glass-walled office">
-        </picture>
-      </figure>
     </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
   </section>
 
   <section class="band" id="who" aria-labelledby="who-h">
@@ -506,6 +560,41 @@
     </div>
   </section>
 
+  <section class="band faq" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="faq-head" data-reveal>
+        <h2 id="faq-h">Questions people ask first</h2>
+        <p>Short answers. Anything else, ask me on the call.</p>
+      </div>
+      <div class="faq-list">
+        <details data-reveal>
+          <summary><span>What happens on the first call?</span></summary>
+          <div class="answer"><p>Thirty minutes on the thing that's bugging you about your money. No forms, no prep. You book it straight from my calendar at the bottom of this page.</p></div>
+        </details>
+        <details data-reveal>
+          <summary><span>Who do you work with?</span></summary>
+          <div class="answer"><p>Tech and biotech employees with equity compensation, physicians from residency through attending, and small business owners with 5 to 50 people.</p></div>
+        </details>
+        <details data-reveal>
+          <summary><span>Where is your office?</span></summary>
+          <div class="answer"><p>134 Turnpike Road, Suite 300, in Southborough. I live in Newton.</p></div>
+        </details>
+        <details data-reveal>
+          <summary><span>Which states can you work in?</span></summary>
+          <div class="answer"><p>I'm licensed to offer securities in MA, ME, NY, MO, RI, NH and CA, and to sell insurance in 17 states. The full lists are at the bottom of this page.</p></div>
+        </details>
+        <details data-reveal>
+          <summary><span>Can we talk in Persian?</span></summary>
+          <div class="answer"><p>Yes. Persian is my first language. I also speak some Spanish.</p></div>
+        </details>
+        <details data-reveal>
+          <summary><span>What is a CPFA<span class="reg">®</span>?</span></summary>
+          <div class="answer"><p>Certified Plan Fiduciary Advisor. It's a designation that covers the fiduciary responsibilities a plan sponsor takes on. <span class="verify">[VERIFY: firm-approved CPFA® wording]</span></p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="band contact on-dark" id="contact" tabindex="-1" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="contact-info" data-reveal>
@@ -535,21 +624,40 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <a class="brand" href="#top">Pouya Jalili, CPFA<span class="reg">®</span></a>
-    <nav aria-label="Footer">
+    <div class="foot-col">
+      <a class="brand" href="#top">Pouya Jalili, CPFA<span class="reg">®</span></a>
+      <div class="foot-lines">
+        <a href="sms:+16175442879">Text 617-544-2879</a>
+        <a href="tel:+17748434919">Office 774-843-4919</a>
+        <a href="mailto:pjalili@baystatefinancial.com">pjalili@baystatefinancial.com</a>
+        <span>134 Turnpike Road, Suite 300<br>Southborough, MA 01772</span>
+      </div>
+    </div>
+    <nav class="foot-col" aria-label="Footer">
+      <p class="foot-title">On this page</p>
       <ul>
         <li><a class="nav-link" href="#who">Who I help</a></li>
         <li><a class="nav-link" href="#how">How I work</a></li>
         <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <li><a class="nav-link" href="#faq">FAQ</a></li>
+        <li><a class="nav-link" href="#contact">Book a call</a></li>
         <li><a class="nav-link" href="https://www.instagram.com/advisorpouya/" rel="noopener">Instagram</a></li>
         <li><a class="nav-link" href="https://www.linkedin.com/in/pouya-jalili-cpfa%C2%AE-22857b11a" rel="noopener">LinkedIn</a></li>
       </ul>
     </nav>
-    <p class="disclosure">Pouya Jalili is a registered representative of and offers securities and investment advisory services through MML Investors Services, LLC, Member <a href="https://www.sipc.org" target="_blank" rel="noopener">SIPC</a>. Supervisory address: 1 Marina Park Drive, 16th Floor, Boston, MA 02210, 617-585-4500.</p>
-    <p class="disclosure">Licensed to sell insurance in: MA, TX, PA, UT, AL, CA, MD, FL, CT, TN, ME, IL, GA, NJ, WV, NC, RI. Licensed to offer securities in: MA, ME, NY, MO, RI, NH, CA.</p>
+    <div class="foot-col foot-legal">
+      <p class="foot-title">Disclosures</p>
+      <p class="disclosure">Pouya Jalili is a registered representative of and offers securities and investment advisory services through MML Investors Services, LLC, Member <a href="https://www.sipc.org" target="_blank" rel="noopener">SIPC</a>. Supervisory address: 1 Marina Park Drive, 16th Floor, Boston, MA 02210, 617-585-4500.</p>
+      <p class="disclosure">Licensed to sell insurance in: MA, TX, PA, UT, AL, CA, MD, FL, CT, TN, ME, IL, GA, NJ, WV, NC, RI. Licensed to offer securities in: MA, ME, NY, MO, RI, NH, CA.</p>
+    </div>
+    <div class="foot-bottom">
+      <span>Pouya Jalili, CPFA<span class="reg">®</span> · Baystate Financial</span>
+      <a href="https://brokercheck.finra.org/" rel="noopener">Check my background on FINRA BrokerCheck</a>
+    </div>
   </div>
 </footer>
+
+<a class="to-top" id="toTop" href="#top" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 14V4M4.5 8.5 9 4l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <div class="mobile-cta" id="mobileCta" aria-hidden="true">
   <a class="btn" href="#contact" tabindex="-1">Book a 30-min call</a>
@@ -569,6 +677,7 @@
     mobileCta.classList.toggle('show', show);
     mobileCta.setAttribute('aria-hidden', String(!show));
     mobileCta.querySelector('a').tabIndex = show ? 0 : -1;
+    document.getElementById('toTop').classList.toggle('show', pastHero);
   }
   if (hasIO) {
     new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; header.classList.toggle('light', pastHero); updateCta(); }, { rootMargin: '-68px 0px 0px 0px' }).observe(hero);
@@ -582,7 +691,7 @@
       if (!e.isIntersecting) return;
       navLinks.forEach(a => a.getAttribute('href') === '#' + e.target.id ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
     }), { rootMargin: '-45% 0px -50% 0px' });
-    ['who', 'how', 'about', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+    ['who', 'how', 'about', 'faq', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
     new IntersectionObserver(([e]) => { if (e.isIntersecting) navLinks.forEach(a => a.removeAttribute('aria-current')); }, { rootMargin: '-45% 0px -50% 0px' }).observe(hero);
   }
 

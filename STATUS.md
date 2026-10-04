@@ -5,7 +5,8 @@ Site source: `site/` (open `site/index.html`, or run `python3 -m http.server 800
 
 ## Decided
 - Tokens: Ink #1E2A36, Paper #F6F7F5, Firuzeh #13706F (only accent), Slate #5B6670. Radius 4px on buttons only. No shadows, no divider rules.
-- Redesign (Oct 4): fixed the 'Google Doc' look with sans body text, bigger display type, full-bleed bands, hero photo with offset Firuzeh block, credentials line.
+- v4 (Oct 4), modeled on patrickrmccormick.com's patterns: full-bleed photo hero with Ink wash and load animation, see-through header that turns solid Ink on scroll, persona picker, tabbed Who I help with hover cards, scroll-filled process line, FAQ accordion, Firuzeh contact band with Calendly card, three-column Ink footer with BrokerCheck link, back-to-top, phone booking bar.
+- Overrides of the earlier spec (by request to make it feel like a real website): two fonts, rounded cards and pill buttons, soft shadows, motion (reduced-motion respected), dark footer.
 - Type: Literata (display: h1, h2, statements, quote) + Public Sans (body and UI), both self-hosted Latin WOFF2 in `site/fonts/`.
 - Color bands: Paper hero, Mist/Paper alternating audience bands, Ink 'How I work', Firuzeh contact. Derived tones: Mist, Firuzeh-deep, Firuzeh-light, on-dark muted.
 - Hero headline in one weight and color. No section eyebrows, no arrow glyphs, no card tags.
