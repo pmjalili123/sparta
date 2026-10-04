@@ -28,7 +28,8 @@
 
 <!-- The h1 is the LCP element, so its font is preloaded. -->
 <link rel="preload" href="fonts/literata-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/pouya-hero-800.webp" imagesrcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" imagesizes="(max-width: 860px) 320px, 360px" type="image/webp">
+<link rel="preload" href="fonts/publicsans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/pouya-hero-800.webp" imagesrcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" imagesizes="(max-width: 900px) 340px, 440px" type="image/webp">
 
 <script type="application/ld+json">
 {
@@ -91,7 +92,7 @@
 @layer reset {
   *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  body, h1, h2, h3, p, ul, ol, li, figure, dl, dd { margin: 0; padding: 0; }
   ul, ol { list-style: none; }
   img, picture { display: block; max-width: 100%; height: auto; }
   button { font: inherit; }
@@ -101,45 +102,39 @@
 }
 
 @layer tokens {
-  /* Layout: one column of content on Paper; spacing alone separates rows. Firuzeh is the only accent. */
+  /* Layout: full-bleed color bands (Paper, Mist, Ink, Firuzeh) give the page rhythm; Literata for display, Public Sans for reading and UI. */
   :root {
     --ink: #1E2A36;
     --paper: #F6F7F5;
     --firuzeh: #13706F;
     --slate: #5B6670;
+    /* derived from the four tokens */
+    --mist: #E6EEEC;            /* Firuzeh tint for alternating bands */
+    --firuzeh-deep: #0F5A59;    /* button hover */
+    --firuzeh-light: #7CC8BF;   /* accent on Ink */
+    --on-dark: #F6F7F5;
+    --on-dark-muted: #C3CBD0;   /* secondary text on Ink */
+    --on-firuzeh-muted: #DDE9E6; /* secondary text on Firuzeh */
 
-    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
     --radius-btn: 4px;
 
-    --font: "Literata", Georgia, serif;
-    --measure: 68ch;
-    --page: 1120px;
-    --gutter: var(--s5);
+    --display: "Literata", Georgia, serif;
+    --text: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --page: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
     color-scheme: light;
   }
-  @media (max-width: 480px) { :root { --gutter: var(--s4); } }
 }
 
 @layer base {
-  @font-face {
-    font-family: "Literata";
-    src: url("fonts/literata-latin-var.woff2") format("woff2");
-    font-weight: 200 900;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  body {
-    background: var(--paper); color: var(--ink);
-    font-family: var(--font); font-size: 1.125rem; line-height: 1.65; font-weight: 400;
-    font-optical-sizing: none; font-variation-settings: "opsz" 12;
-    font-variant-numeric: lining-nums;
-  }
-  h1, h2, h3 { color: var(--ink); text-wrap: balance; }
-  h2 { font-size: 1.75rem; line-height: 1.2; font-weight: 600; font-variation-settings: "opsz" 36; }
-  h3 { font-size: 1.375rem; line-height: 1.3; font-weight: 600; font-variation-settings: "opsz" 24; }
-  p, li { max-width: var(--measure); }
-  a { color: var(--firuzeh); text-underline-offset: 3px; }
+  @font-face { font-family: "Literata"; src: url("fonts/literata-latin-var.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
+  @font-face { font-family: "Public Sans"; src: url("fonts/publicsans-latin-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--text); font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 450; font-variation-settings: "opsz" 60; font-size: clamp(2rem, 2.6vw + 1rem, 3.25rem); line-height: 1.08; letter-spacing: -0.015em; }
+  p, li { max-width: 64ch; }
+  a { color: var(--firuzeh); text-underline-offset: 3px; text-decoration-thickness: 1px; }
   a:hover { text-decoration-thickness: 2px; }
   :focus-visible { outline: 2px solid var(--firuzeh); outline-offset: 2px; }
   [tabindex="-1"]:focus { outline: none; }
@@ -148,108 +143,139 @@
 
 @layer layout {
   :where(.wrap) { width: 100%; max-width: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
-  :where(main) { display: grid; gap: var(--s9); padding-block: var(--s8) var(--s9); }
-  :where(section) { display: grid; gap: var(--s7); scroll-margin-top: var(--s9); }
-  @media (max-width: 640px) { :where(main) { gap: var(--s8); padding-block: var(--s7) var(--s8); } :where(section) { gap: var(--s6); } }
+  :where(.band) { padding-block: var(--s10); scroll-margin-top: 72px; }
+  :where(.band > .wrap) { display: grid; gap: var(--s8); }
+  @media (max-width: 720px) { :where(.band) { padding-block: var(--s8); } :where(.band > .wrap) { gap: var(--s7); } }
 
-  /* Header */
   :where(.site-header) { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
-  :where(.site-header .wrap) { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s6); padding-block: var(--s3); }
+  :where(.site-header .wrap) { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s6); padding-block: var(--s3); }
   :where(.site-header nav) { margin-left: auto; }
   :where(.site-header nav ul) { display: flex; flex-wrap: wrap; gap: 0 var(--s5); }
   @media (max-width: 860px) {
     :where(.site-header) { position: static; }
     :where(.site-header .wrap) { justify-content: space-between; }
     :where(.site-header nav) { order: 3; margin-left: 0; width: 100%; }
-    :where(.site-header nav ul) { gap: 0 var(--s2); justify-content: space-between; }
+    :where(.site-header nav ul) { justify-content: space-between; gap: 0 var(--s2); }
   }
 
-  /* Hero */
-  /* Headline spans the hero so the 22ch measure is the binding width; supporting line and photo share the row below */
-  :where(.hero) { grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: var(--s7) var(--s8); align-items: start; }
-  :where(.hero h1) { grid-column: 1 / -1; }
+  :where(.hero .wrap) { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s8); align-items: center; padding-block: var(--s7) var(--s9); }
   :where(.hero-text) { display: grid; gap: var(--s6); justify-items: start; }
-  @media (max-width: 860px) { :where(.hero) { grid-template-columns: minmax(0, 1fr); } :where(.hero picture) { max-width: 320px; } }
+  @media (max-width: 900px) { :where(.hero .wrap) { grid-template-columns: minmax(0, 1fr); gap: var(--s7); padding-block: var(--s6) var(--s8); } }
 
-  /* Who I help rows */
-  :where(.rows) { display: grid; gap: var(--s8); }
-  :where(.row) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s4) var(--s7); align-items: start; }
-  :where(.row-intro) { display: grid; gap: var(--s4); }
-  :where(.row-decisions) { display: grid; gap: var(--s4); }
-  @media (max-width: 860px) { :where(.row) { grid-template-columns: minmax(0, 1fr); gap: var(--s5); } }
+  :where(.audience .wrap) { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s6) var(--s8); align-items: start; }
+  @media (max-width: 900px) { :where(.audience .wrap) { grid-template-columns: minmax(0, 1fr); } }
+  :where(.audience) { padding-block: var(--s9); }
+  @media (max-width: 720px) { :where(.audience) { padding-block: var(--s8); } }
 
-  /* About */
-  :where(.about) { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); align-items: start; gap: var(--s7) var(--s8); }
-  :where(.about-copy) { display: grid; gap: var(--s5); }
-  @media (max-width: 860px) { :where(.about) { grid-template-columns: minmax(0, 1fr); } :where(.about picture) { max-width: 320px; } }
+  :where(.about .wrap) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s8); align-items: start; }
+  @media (max-width: 900px) { :where(.about .wrap) { grid-template-columns: minmax(0, 1fr); gap: var(--s7); } }
 
-  /* Contact */
-  :where(.contact-body) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: var(--s7); align-items: start; }
-  :where(.contact-info) { display: grid; gap: var(--s5); }
-  @media (max-width: 860px) { :where(.contact-body) { grid-template-columns: minmax(0, 1fr); } }
+  :where(.contact .wrap) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s8); align-items: start; }
+  @media (max-width: 900px) { :where(.contact .wrap) { grid-template-columns: minmax(0, 1fr); gap: var(--s7); } }
 
-  /* Footer */
-  :where(.site-footer .wrap) { display: grid; gap: var(--s5); padding-block: var(--s7) var(--s8); }
+  :where(.site-footer .wrap) { display: grid; gap: var(--s5); padding-block: var(--s8); }
 }
 
 @layer components {
-  /* Brand and nav */
-  .brand { color: var(--ink); text-decoration: none; font-size: 1.125rem; font-weight: 600; font-variation-settings: "opsz" 24; display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; }
-  .nav-link { color: var(--ink); text-decoration: none; font-size: 1rem; font-weight: 600; font-variation-settings: "opsz" 12; display: inline-flex; align-items: center; min-height: 44px; }
+  /* Header */
+  .brand { color: var(--ink); text-decoration: none; font-family: var(--display); font-size: 1.25rem; font-weight: 600; font-variation-settings: "opsz" 24; display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; letter-spacing: -0.01em; }
+  .nav-link { color: var(--ink); text-decoration: none; font-size: .9375rem; font-weight: 500; display: inline-flex; align-items: center; min-height: 44px; }
   .nav-link:hover { color: var(--firuzeh); }
 
-  /* Button: the only rounded element */
-  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: var(--s3) var(--s5); background: var(--firuzeh); color: var(--paper); border: 0; border-radius: var(--radius-btn); font-family: var(--font); font-size: 1rem; font-weight: 600; font-variation-settings: "opsz" 12; line-height: 1.2; text-decoration: none; cursor: pointer; white-space: nowrap; }
-  .btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+  /* Buttons: the only rounded element */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); min-height: 48px; padding: var(--s3) var(--s5); background: var(--firuzeh); color: var(--paper); border: 0; border-radius: var(--radius-btn); font-family: var(--text); font-size: 1rem; font-weight: 600; line-height: 1.2; text-decoration: none; cursor: pointer; white-space: nowrap; transition: background .15s ease; }
+  .btn:hover { background: var(--firuzeh-deep); }
   .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .site-header .btn { min-height: 44px; padding: var(--s2) var(--s4); font-size: .9375rem; }
+  .btn-light { background: var(--paper); color: var(--ink); }
+  .btn-light:hover { background: #FFFFFF; }
+  .btn-light:focus-visible { outline-color: var(--paper); }
 
   /* Hero */
-  .hero h1 { font-size: clamp(2.25rem, 4.5vw + 1rem, 3.75rem); line-height: 1.12; letter-spacing: -0.01em; font-weight: 450; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 22ch; }
-  .hero .support { color: var(--slate); }
+  .kicker { font-size: .9375rem; font-weight: 600; color: var(--firuzeh); }
+  .hero h1 { font-family: var(--display); font-size: clamp(2.375rem, 4vw + 1rem, 4.25rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 17ch; }
+  .hero .support { font-size: clamp(1.125rem, .5vw + 1rem, 1.3125rem); line-height: 1.55; color: var(--slate); max-width: 40ch; }
+  .creds { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); font-size: .875rem; color: var(--slate); }
+  .creds li { display: inline-block; }
+  .creds li + li::before { content: ""; display: inline-block; vertical-align: middle; width: 4px; height: 4px; background: var(--firuzeh); margin: -2px var(--s3) 0 0; }
+  .portrait { position: relative; justify-self: end; width: calc(100% - var(--s5)); max-width: 440px; margin: 0 var(--s5) var(--s5) 0; }
+  .portrait::before { content: ""; position: absolute; inset: var(--s5) calc(var(--s5) * -1) calc(var(--s5) * -1) var(--s5); background: var(--firuzeh); }
+  .portrait img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  @media (max-width: 900px) { .portrait { justify-self: start; max-width: 340px; } }
 
-  /* Who I help */
-  .row-intro p { color: var(--ink); }
-  .decisions { display: grid; gap: var(--s3); }
-  .decisions li { padding-left: var(--s5); position: relative; }
-  .decisions li::before { content: ""; position: absolute; left: 0; top: .78em; width: var(--s3); height: 2px; background: var(--firuzeh); }
-  .cpfa { color: var(--slate); }
+  /* Section intro */
+  .intro { padding-block: var(--s9) 0; }
+  .intro .wrap { display: grid; gap: var(--s4); }
+  .intro p { color: var(--slate); font-size: 1.125rem; max-width: 52ch; }
+  @media (max-width: 720px) { .intro { padding-block: var(--s8) 0; } }
 
-  /* How I work: the only sequence on the page */
-  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s6); counter-reset: step; }
-  .steps li { counter-increment: step; display: grid; gap: var(--s2); align-content: start; }
-  .steps li::before { content: counter(step); font-size: 1.75rem; line-height: 1.2; font-weight: 600; font-variation-settings: "opsz" 36; color: var(--firuzeh); }
-  .steps h3 { font-size: 1.125rem; font-variation-settings: "opsz" 12; }
-  .steps p { color: var(--slate); }
-  @media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 520px) { .steps { grid-template-columns: minmax(0, 1fr); gap: var(--s5); } }
-  .pay { color: var(--ink); }
+  /* Audience bands */
+  .audience.alt { background: var(--mist); }
+  .audience-head { display: grid; gap: var(--s4); }
+  .audience h3 { font-family: var(--text); font-size: .9375rem; font-weight: 700; color: var(--firuzeh); letter-spacing: .01em; }
+  .statement { font-family: var(--display); font-size: clamp(1.75rem, 1.6vw + 1rem, 2.5rem); line-height: 1.15; font-weight: 450; font-variation-settings: "opsz" 48; letter-spacing: -0.01em; max-width: 20ch; }
+  .situation { color: var(--slate); font-size: 1.0625rem; max-width: 46ch; }
+  .decide { display: grid; gap: var(--s4); padding-top: var(--s2); }
+  .decide-label { font-size: .875rem; font-weight: 600; color: var(--slate); }
+  .decisions { display: grid; gap: var(--s4); }
+  .decisions li { position: relative; padding-left: var(--s6); font-size: 1.0625rem; line-height: 1.5; }
+  .decisions li::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; background: var(--firuzeh); }
+  .cpfa { font-size: .9375rem; color: var(--slate); padding-top: var(--s2); }
+
+  /* How I work: Ink band */
+  .dark { background: var(--ink); color: var(--on-dark); }
+  .dark h2 { color: var(--on-dark); }
+  .dark :focus-visible { outline-color: var(--paper); }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s7) var(--s6); counter-reset: step; }
+  .steps li { counter-increment: step; display: grid; gap: var(--s3); align-content: start; }
+  .steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--display); font-size: 3rem; line-height: 1; font-weight: 300; font-variation-settings: "opsz" 72; color: var(--firuzeh-light); }
+  .steps h3 { font-family: var(--text); font-size: 1.125rem; font-weight: 600; }
+  .steps p { color: var(--on-dark-muted); }
+  @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+  .pay { color: var(--on-dark-muted); font-size: 1rem; }
+  .pay strong { color: var(--on-dark); font-weight: 600; }
 
   /* About */
-  .quote { font-size: 1.375rem; line-height: 1.4; font-style: normal; font-weight: 450; font-variation-settings: "opsz" 24; padding-left: var(--s5); border-left: 2px solid var(--firuzeh); }
-  .facts { color: var(--slate); }
-  .findme { display: grid; gap: var(--s2); }
-  .findme ul { display: grid; gap: var(--s1); }
+  .about-photo img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .about-copy { display: grid; gap: var(--s5); }
+  .quote { font-family: var(--display); font-size: clamp(1.5rem, 1.2vw + 1rem, 2rem); line-height: 1.25; font-weight: 400; font-variation-settings: "opsz" 48; letter-spacing: -0.01em; color: var(--firuzeh); max-width: 26ch; }
+  .facts { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .facts li { font-size: .875rem; font-weight: 500; background: var(--mist); padding: var(--s1) var(--s3); }
+  .findme { display: grid; gap: var(--s3); padding-top: var(--s4); }
+  .findme h3 { font-family: var(--text); font-size: .9375rem; font-weight: 700; color: var(--firuzeh); }
+  .findme ul { display: grid; gap: var(--s2); }
+  .findme li { position: relative; padding-left: var(--s5); }
+  .findme li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; background: var(--firuzeh); }
 
-  /* Contact */
-  .contact-lines { display: grid; gap: var(--s1); }
-  .contact-lines div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: var(--s3); align-items: center; }
-  .contact-lines dt { color: var(--slate); font-size: 1rem; }
-  .contact-lines dd { margin: 0; min-width: 0; }
-  .contact-lines a, .contact-lines span { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+  /* Contact: Firuzeh band */
+  .contact { background: var(--firuzeh); color: var(--on-dark); }
+  .contact h2 { color: var(--on-dark); }
+  .contact a { color: var(--on-dark); }
+  .contact :focus-visible { outline-color: var(--paper); }
+  .contact-info { display: grid; gap: var(--s6); align-content: start; }
+  .contact-info > p { font-size: 1.125rem; color: var(--on-dark); max-width: 36ch; }
+  .contact-lines { display: grid; gap: 0; }
+  .contact-lines div { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: var(--s3); align-items: center; }
+  .contact-lines dt { color: var(--on-firuzeh-muted); font-size: .875rem; font-weight: 500; }
+  .contact-lines dd { min-width: 0; }
+  .contact-lines a, .contact-lines span { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; font-weight: 500; }
   @media (max-width: 400px) { .contact-lines div { grid-template-columns: minmax(0, 1fr); gap: 0; } .contact-lines dt { padding-top: var(--s2); } }
-  .goal a, .after-booking a { display: inline-flex; align-items: center; min-height: 44px; }
+  .goal a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
   .scheduler { display: grid; gap: var(--s3); min-width: 0; }
+  .sched-panel { background: var(--paper); color: var(--ink); min-width: 0; }
   .calendly-inline-widget { width: 100%; min-width: 0; height: 700px; overflow: hidden; }
-  .sched-fallback { color: var(--ink); }
-  .sched-note { color: var(--slate); font-size: 1rem; }
+  .sched-fallback { padding: var(--s6); color: var(--ink); }
+  .sched-fallback a { color: var(--firuzeh); }
+  .sched-note { color: var(--on-firuzeh-muted); font-size: .875rem; }
 
   /* Footer */
   .site-footer nav ul { display: flex; flex-wrap: wrap; gap: 0 var(--s5); }
+  .site-footer .brand { font-size: 1.125rem; }
   .site-footer .disclosure { color: var(--slate); font-size: .875rem; line-height: 1.6; max-width: 95ch; }
   .site-footer .disclosure a { color: var(--slate); }
 
-  /* Temporary review markers */
-  .verify { font-weight: 600; color: var(--ink); outline: 1px dashed var(--slate); outline-offset: 2px; }
+  .verify { font-family: var(--text); font-weight: 600; font-size: .875em; padding: 0 var(--s1); outline: 1px dashed currentColor; outline-offset: 2px; }
 
   .skip { position: absolute; left: var(--s3); top: -100px; z-index: 20; }
   .skip:focus { top: var(--s3); }
@@ -274,30 +300,47 @@
   </div>
 </header>
 
-<main id="main" class="wrap" tabindex="-1">
+<main id="main" tabindex="-1">
 
   <section class="hero" id="top" aria-labelledby="hero-h">
-    <h1 id="hero-h">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</h1>
-    <div class="hero-text">
-      <p class="support">Financial advisor in Greater Boston for tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
-      <a class="btn" href="#contact">Book a call</a>
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="kicker">Financial advisor in Greater Boston</p>
+        <h1 id="hero-h">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</h1>
+        <p class="support">For tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
+        <a class="btn" href="#contact">Book a call</a>
+        <ul class="creds" aria-label="Background">
+          <li>CPFA<span class="reg">®</span></li>
+          <li>Baystate Financial, Southborough</li>
+          <li>Speaks Persian</li>
+        </ul>
+      </div>
+      <figure class="portrait">
+        <picture>
+          <source type="image/webp" srcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" sizes="(max-width: 900px) 340px, 440px">
+          <img src="assets/pouya-hero-800.jpg" srcset="assets/pouya-hero-480.jpg 480w, assets/pouya-hero-800.jpg 800w" sizes="(max-width: 900px) 340px, 440px" width="800" height="1000" fetchpriority="high" alt="Pouya Jalili smiling, wearing a dark suit and white tie in a glass-walled office">
+        </picture>
+      </figure>
     </div>
-    <picture>
-      <source type="image/webp" srcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" sizes="(max-width: 860px) 320px, 360px">
-      <img src="assets/pouya-hero-800.jpg" srcset="assets/pouya-hero-480.jpg 480w, assets/pouya-hero-800.jpg 800w" sizes="(max-width: 860px) 320px, 360px" width="800" height="1000" fetchpriority="high" alt="Pouya Jalili smiling, wearing a dark suit and white tie in a glass-walled office">
-    </picture>
   </section>
 
   <section id="who" aria-labelledby="who-h">
-    <h2 id="who-h">You probably recognize one of these</h2>
-    <div class="rows">
+    <div class="intro">
+      <div class="wrap">
+        <h2 id="who-h">You probably recognize one of these</h2>
+        <p>Three groups I work with. Each one hits the same handful of decisions at roughly the same point in life.</p>
+      </div>
+    </div>
 
-      <article class="row" aria-labelledby="row-tech">
-        <div class="row-intro">
+    <article class="audience band" aria-labelledby="row-tech">
+      <div class="wrap">
+        <div class="audience-head">
           <h3 id="row-tech">Tech and biotech employees</h3>
-          <p>Your stock vests faster than you can decide what to do with it. You work in Kendall Square or along 128, and so does most of your net worth.</p>
+          <p class="statement">Your stock vests faster than you can decide what to do with it.</p>
+          <p class="situation">You work in Kendall Square or along 128, and so does most of your net worth.</p>
         </div>
-        <div class="row-decisions">
+        <div class="decide">
+          <p class="decide-label">What we work through</p>
           <ul class="decisions">
             <li>Sell or hold RSUs when they vest</li>
             <li>When to exercise ISOs, and how much AMT that triggers</li>
@@ -306,14 +349,18 @@
             <li>Life coverage sized to a young family when most of your net worth is one company's stock</li>
           </ul>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <article class="row" aria-labelledby="row-doc">
-        <div class="row-intro">
+    <article class="audience band alt" aria-labelledby="row-doc">
+      <div class="wrap">
+        <div class="audience-head">
           <h3 id="row-doc">Physicians, residency through attending</h3>
-          <p>You started earning late and the decisions came all at once. Whether you're a resident at a Boston teaching hospital or an attending a few years out, your plan hasn't caught up with your career.</p>
+          <p class="statement">You started earning late and the decisions came all at once.</p>
+          <p class="situation">Whether you're a resident at a Boston teaching hospital or an attending a few years out, your plan hasn't caught up with your career.</p>
         </div>
-        <div class="row-decisions">
+        <div class="decide">
+          <p class="decide-label">What we work through</p>
           <ul class="decisions">
             <li>Own-occupation disability coverage sized to your specialty</li>
             <li>Paying down student loans versus saving for retirement</li>
@@ -321,14 +368,18 @@
             <li>What to do with the income jump after training</li>
           </ul>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <article class="row" aria-labelledby="row-biz">
-        <div class="row-intro">
+    <article class="audience band" aria-labelledby="row-biz">
+      <div class="wrap">
+        <div class="audience-head">
           <h3 id="row-biz">Small business owners</h3>
-          <p>You run the business, and your own plan keeps getting pushed. You have 5 to 50 people in MetroWest and either no retirement plan or one nobody has looked at in years.</p>
+          <p class="statement">You run the business. Your own plan keeps getting pushed.</p>
+          <p class="situation">You have 5 to 50 people in MetroWest and either no retirement plan or one nobody has looked at in years.</p>
         </div>
-        <div class="row-decisions">
+        <div class="decide">
+          <p class="decide-label">What we work through</p>
           <ul class="decisions">
             <li>A standalone 401(k) versus joining a pooled employer plan</li>
             <li>Plan design: who's eligible, how the match works, safe harbor or not</li>
@@ -338,50 +389,55 @@
           </ul>
           <p class="cpfa">I hold the Certified Plan Fiduciary Advisor (CPFA<span class="reg">®</span>) designation, which covers the fiduciary responsibilities a plan sponsor takes on. <span class="verify">[VERIFY: firm-approved CPFA® wording]</span></p>
         </div>
-      </article>
+      </div>
+    </article>
+  </section>
 
+  <section class="band dark" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <h2 id="how-h">It starts with a conversation</h2>
+      <ol class="steps">
+        <li><h3>Talk</h3><p>Thirty minutes on the thing that's bugging you about your money. No forms, no prep.</p></li>
+        <li><h3>Plan</h3><p>We put your pay, equity, accounts and coverage into one picture.</p></li>
+        <li><h3>Put it in place</h3><p>Open the accounts, change the coverage, set up the savings.</p></li>
+        <li><h3>Review</h3><p>We check in when your job, pay or family changes.</p></li>
+      </ol>
+      <p class="pay"><strong>How I get paid:</strong> <span class="verify">[VERIFY: approved wording for fee-based planning plus commissions]</span></p>
     </div>
   </section>
 
-  <section id="how" aria-labelledby="how-h">
-    <h2 id="how-h">It starts with a conversation</h2>
-    <ol class="steps">
-      <li><h3>Talk</h3><p>Thirty minutes on the thing that's bugging you about your money. No forms, no prep.</p></li>
-      <li><h3>Plan</h3><p>We put your pay, equity, accounts and coverage into one picture.</p></li>
-      <li><h3>Put it in place</h3><p>Open the accounts, change the coverage, set up the savings.</p></li>
-      <li><h3>Review</h3><p>We check in when your job, pay or family changes.</p></li>
-    </ol>
-    <p class="pay"><strong>How I get paid:</strong> <span class="verify">[VERIFY: approved wording for fee-based planning plus commissions]</span></p>
-  </section>
-
-  <section class="about" id="about" aria-labelledby="about-h">
-    <picture>
-      <source type="image/webp" srcset="assets/pouya-about-400.webp 400w, assets/pouya-about-700.webp 700w" sizes="(max-width: 860px) 320px, 360px">
-      <img src="assets/pouya-about-700.jpg" srcset="assets/pouya-about-400.jpg 400w, assets/pouya-about-700.jpg 700w" sizes="(max-width: 860px) 320px, 360px" width="700" height="700" loading="lazy" decoding="async" alt="Head-and-shoulders portrait of Pouya Jalili">
-    </picture>
-    <div class="about-copy">
-      <h2 id="about-h">Why I do this</h2>
-      <p class="quote">Most people my age don't have someone in their corner for the financial decisions that matter early on. I try to be that person.</p>
-      <p>My family came to this country from Iran in the '90s with $1,000. I grew up watching them build everything from scratch, and that shaped how I think about money, risk, and what it means to build something that lasts.</p>
-      <p>My parents came here for their PhDs. My father studied mechanical engineering at UConn and my mother studied microbiology at Clemson. I come from a family of engineers, scientists and doctors.</p>
-      <p>I started in aerospace engineering at the University of Alabama. During COVID I got into the markets, and I switched to finance and real estate. Engineers' kids end up in planning for the same reason they end up in engineering: you want to build something that lasts, and you check the math before you trust it.</p>
-      <p>I live in Newton with Rosie, my Pembroke Welsh Corgi. When I'm not working, I'm usually out for a run.</p>
-      <p class="facts">Persian (native). Spanish (limited working). BS Finance &amp; Real Estate, University of Alabama.</p>
-      <div class="findme">
-        <h3>Where you'll find me</h3>
-        <ul class="decisions">
-          <li>Chairing the Young Professionals (YoPro) committee at the Marlborough Regional Chamber</li>
-          <li>At Charles River Regional Chamber events</li>
-          <li>Chairing the Commonwealth Business Circle, a local referral group</li>
+  <section class="band about" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <picture class="about-photo">
+        <source type="image/webp" srcset="assets/pouya-about-400.webp 400w, assets/pouya-about-700.webp 700w" sizes="(max-width: 900px) 340px, 440px">
+        <img src="assets/pouya-about-700.jpg" srcset="assets/pouya-about-400.jpg 400w, assets/pouya-about-700.jpg 700w" sizes="(max-width: 900px) 340px, 440px" width="700" height="700" loading="lazy" decoding="async" alt="Head-and-shoulders portrait of Pouya Jalili">
+      </picture>
+      <div class="about-copy">
+        <h2 id="about-h">Why I do this</h2>
+        <p class="quote">Most people my age don't have someone in their corner for the financial decisions that matter early on. I try to be that person.</p>
+        <p>My family came to this country from Iran in the '90s with $1,000. I grew up watching them build everything from scratch, and that shaped how I think about money, risk, and what it means to build something that lasts.</p>
+        <p>My parents came here for their PhDs. My father studied mechanical engineering at UConn and my mother studied microbiology at Clemson. I come from a family of engineers, scientists and doctors.</p>
+        <p>I started in aerospace engineering at the University of Alabama. During COVID I got into the markets, and I switched to finance and real estate. Engineers' kids end up in planning for the same reason they end up in engineering: you want to build something that lasts, and you check the math before you trust it.</p>
+        <p>I live in Newton with Rosie, my Pembroke Welsh Corgi. When I'm not working, I'm usually out for a run.</p>
+        <ul class="facts" aria-label="Languages and education">
+          <li>Persian (native)</li><li>Spanish (limited working)</li><li>BS Finance &amp; Real Estate, University of Alabama</li>
         </ul>
+        <div class="findme">
+          <h3>Where you'll find me</h3>
+          <ul>
+            <li>Chairing the Young Professionals (YoPro) committee at the Marlborough Regional Chamber</li>
+            <li>At Charles River Regional Chamber events</li>
+            <li>Chairing the Commonwealth Business Circle, a local referral group</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" tabindex="-1" aria-labelledby="contact-h">
-    <h2 id="contact-h" tabindex="-1">Let's talk</h2>
-    <div class="contact-body">
+  <section class="band contact" id="contact" tabindex="-1" aria-labelledby="contact-h">
+    <div class="wrap">
       <div class="contact-info">
+        <h2 id="contact-h" tabindex="-1">Let's talk</h2>
         <p>Pick a time for a 30-minute call. Bring the question that's been sitting in the back of your mind.</p>
         <dl class="contact-lines">
           <div><dt>Text</dt><dd><a href="sms:+16175442879">617-544-2879</a></dd></div>
@@ -394,8 +450,10 @@
         <p class="goal">Not ready to talk yet? <a href="https://wealth.emaplan.com/mass/LeadGen/Welcome/ced18345-37d1-4f6d-8b16-58ef83bf7f40?mass%2F254%2Fbaystatefin&amp;utm_source=advisorpouya.com&amp;utm_medium=website&amp;utm_content=contact" rel="noopener">Try my goal calculator</a> first.</p>
       </div>
       <div class="scheduler">
-        <div class="calendly-inline-widget" id="calendly" data-url="https://calendly.com/pjalili-baystatefinancial/30min?hide_gdpr_banner=1&amp;primary_color=13706f&amp;background_color=f6f7f5&amp;text_color=1e2a36"></div>
-        <p class="sched-fallback" id="schedFallback" role="status" hidden>Scheduling didn't load. Text <a href="sms:+16175442879">617-544-2879</a> or email <a href="mailto:pjalili@baystatefinancial.com">pjalili@baystatefinancial.com</a>.</p>
+        <div class="sched-panel">
+          <div class="calendly-inline-widget" id="calendly" data-url="https://calendly.com/pjalili-baystatefinancial/30min?hide_gdpr_banner=1&amp;primary_color=13706f&amp;background_color=f6f7f5&amp;text_color=1e2a36"></div>
+          <p class="sched-fallback" id="schedFallback" role="status" hidden>Scheduling didn't load. Text <a href="sms:+16175442879">617-544-2879</a> or email <a href="mailto:pjalili@baystatefinancial.com">pjalili@baystatefinancial.com</a>.</p>
+        </div>
         <p class="sched-note">Please don't include account numbers or other sensitive information when you book.</p>
       </div>
     </div>
@@ -405,6 +463,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
+    <a class="brand" href="#top">Pouya Jalili, CPFA<span class="reg">®</span></a>
     <nav aria-label="Footer">
       <ul>
         <li><a class="nav-link" href="#who">Who I help</a></li>

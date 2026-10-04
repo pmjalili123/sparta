@@ -5,7 +5,9 @@ Site source: `site/` (open `site/index.html`, or run `python3 -m http.server 800
 
 ## Decided
 - Tokens: Ink #1E2A36, Paper #F6F7F5, Firuzeh #13706F (only accent), Slate #5B6670. Radius 4px on buttons only. No shadows, no divider rules.
-- Type: Literata variable, self-hosted Latin WOFF2 (`site/fonts/`). Hero h1 measure 22ch, spans the hero.
+- Redesign (Oct 4): fixed the 'Google Doc' look with sans body text, bigger display type, full-bleed bands, hero photo with offset Firuzeh block, credentials line.
+- Type: Literata (display: h1, h2, statements, quote) + Public Sans (body and UI), both self-hosted Latin WOFF2 in `site/fonts/`.
+- Color bands: Paper hero, Mist/Paper alternating audience bands, Ink 'How I work', Firuzeh contact. Derived tones: Mist, Firuzeh-deep, Firuzeh-light, on-dark muted.
 - Hero headline in one weight and color. No section eyebrows, no arrow glyphs, no card tags.
 - Who I help: three rows (audience, situation, decisions). Standalone decisions section removed.
 - Book a call buttons go to #contact and focus its heading.
@@ -30,4 +32,3 @@ Site source: `site/` (open `site/index.html`, or run `python3 -m http.server 800
 - The artifact preview blocks Calendly and Plausible, so the calendar shows the 8-second fallback message there. Both load on the real domain.
 - Goal calculator link uses utm_source=advisorpouya.com instead of the Instagram tags.
 - PDFs of the current site: `exports/advisorpouya-site-desktop.pdf` and `exports/advisorpouya-site-mobile.pdf` (calendar shown as a labeled placeholder).
-- Pending decision: Public Sans for UI text only (nav, buttons, contact labels, footer nav) to make the page read less like a newsletter.
