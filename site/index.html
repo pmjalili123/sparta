@@ -202,11 +202,12 @@
       linear-gradient(90deg, rgba(30, 42, 54, .97) 0%, rgba(30, 42, 54, .92) 36%, rgba(30, 42, 54, .5) 58%, rgba(30, 42, 54, .04) 80%),
       linear-gradient(0deg, rgba(30, 42, 54, .55), rgba(30, 42, 54, 0) 30%); }
   .hero .wrap { min-height: min(92vh, 860px); display: grid; align-items: center; padding-block: calc(var(--header-h) + var(--s8)) var(--s9); }
-  .hero-text { display: grid; gap: var(--s6); justify-items: start; max-width: 760px; }
+  .hero-text { display: grid; gap: var(--s6); justify-items: start; max-width: 640px; }
   .kicker { display: inline-flex; align-items: center; gap: var(--s2); font-size: .9375rem; font-weight: 600; color: var(--firuzeh-light); }
   .kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--firuzeh-light); box-shadow: 0 0 0 4px rgba(124, 200, 191, .2); }
-  .hero h1 { font-family: var(--display); color: var(--on-dark); font-size: clamp(2rem, 2.4vw + 1.25rem, 3.5rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 21ch; }
+  .hero h1 { font-family: var(--display); color: var(--on-dark); font-size: clamp(2.375rem, 3.6vw + 1rem, 4rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 17ch; }
   .hero .support { font-size: clamp(1.125rem, .5vw + 1rem, 1.25rem); line-height: 1.55; color: var(--on-dark-muted); max-width: 42ch; }
+  .hero .support.lead { color: var(--on-dark); font-size: clamp(1.25rem, .8vw + 1rem, 1.5rem); line-height: 1.4; }
   .picker { display: grid; gap: var(--s3); }
   .picker-label { font-size: .875rem; font-weight: 600; color: var(--on-dark-muted); }
   .picker-options { display: flex; flex-wrap: wrap; gap: var(--s2); }
@@ -432,8 +433,8 @@
     <div class="wrap">
       <div class="hero-text">
         <p class="kicker intro-1">Financial advisor in Greater Boston</p>
-        <h1 id="hero-h" class="intro-2">My family came here in the '90s with $1,000. Now I help people get the early money decisions right.</h1>
-        <p class="support intro-3">For tech and biotech employees with equity, physicians from residency on, and small business owners.</p>
+        <h1 id="hero-h" class="intro-2">My family came here in the '90s with $1,000.</h1>
+        <p class="support lead intro-3">Now I help people get the early money decisions right.</p>
         <div class="picker intro-4">
           <p class="picker-label" id="picker-label">Which sounds like you?</p>
           <div class="picker-options" role="group" aria-labelledby="picker-label">
