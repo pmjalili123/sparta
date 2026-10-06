@@ -38,3 +38,43 @@ Site source: `site/` (open `site/index.html`, or run `python3 -m http.server 800
 - Goal calculator link uses utm_source=advisorpouya.com instead of the Instagram tags.
 - Reference teardown: patrickrmccormick.com (FMG Suite template 007). Taken: full-bleed hero, header that solidifies on scroll, hover/interactive blocks, accordion, dark 3-col footer. Skipped: stock photos, flip cards (need invented copy), testimonials, pinned CRS bar.
 - PDFs of the pre-v4 site: `exports/advisorpouya-site-desktop.pdf` and `exports/advisorpouya-site-mobile.pdf` (calendar shown as a labeled placeholder).
+
+## Scorecard loop (Oct 6): 68.93 to 99.93
+
+Stopped after iteration 04: two consecutive runs at 99.93 (iterations 03 and 04). Reports: `reports/iteration-01.md` to `iteration-04.md`. Harness: `tools/scorecard/` (see its README).
+
+| Category | Start (iter 01) | Final (iter 04) | Max |
+|---|---|---|---|
+| A. Lighthouse mobile, throttled (median of 3) | 29.93 | 29.93 | 30 |
+| B. Accessibility (axe + keyboard) | 19 | 20 | 20 |
+| C. Layout integrity | 0 | 20 | 20 |
+| D. Type and rendering | 0 | 10 | 10 |
+| E. Function | 10 | 10 | 10 |
+| F. Copy and code hygiene | 10 | 10 | 10 |
+| **Total** | **68.93** | **99.93** | 100 |
+
+Lighthouse medians at the end: Performance 0.99, Accessibility 1.00, Best Practices 1.00, SEO 1.00. The remaining 0.08 points is mobile LCP (2.1 s, the hero photo under simulated slow 4G).
+
+Changes, one line each:
+- 41a4b63 Added the scorecard harness and baseline report (no site changes).
+- 290d19d Hero h1: clamp(2rem, 2.4vw + 1.25rem, 3.5rem), max-width 21ch, hero text column 760px. Now 5 lines at 360px and 4 at 768 to 1920px (was 6 and 5).
+- 290d19d 404 and /call-booked/: body text and buttons now render Public Sans (were Literata), with Public Sans @font-face and preload. h1 stays Literata. /call-booked/ is still script-free and reads nothing from the URL.
+- 290d19d /call-booked/ "Back to the home page" link is a 44px target.
+- 290d19d Footer nav links get min-width 44px ("About" was 43px wide, "FAQ" 30px).
+- 290d19d Back-to-top button and phone booking bar moved inside the footer landmark (axe "region"), keeping their own focus-ring colors.
+- 290d19d Hero image preloads get fetchpriority="high"; phone image sources get width/height 800x1000.
+- 9d12b0e Literata file narrowed to the weight range the site uses (400 to 600, opsz untouched): 110 KB to 77 KB. Mobile LCP went from 2.3 s to 2.1 s. @font-face weight range updated on all three pages.
+- 9d12b0e Harness fix only: the booking-bar-covers-content check ignores the bar's own text.
+- c2ce979 Confirmation run, no site changes.
+
+Harness corrections made during the baseline (logged in iteration-01): the first raw run scored 63.85 because of three harness bugs (FAQ stops double-counted when the Tab walk wrapped, text inside closed FAQ items read as visible, a removed TypeScript flag in the JSON-LD check). The baseline was re-measured after fixing them.
+
+Needs Pouya: nothing is blocking the score. No fix required breaking a hard constraint.
+
+Still open (not attempted): fee wording, CPFA® wording, tax/legal disclaimer, Form CRS link, real photos, hero alt text sign-off, decision card counts (5/4/5 vs 4/4/4), Calendly redirect to /call-booked/, hosting (apex domain, 404.html), wireframe file.
+
+Not measurable here, and why:
+- Calendly and Plausible are blocked by the sandbox proxy, so the real calendar embed and analytics were never loaded. Lighthouse blocks both hosts; other checks stub them. The 8-second fallback was tested with the script blocked.
+- The official schema.org validator and Google Rich Results test are blocked. JSON-LD was validated offline by type-checking it against schema-dts (the schema.org vocabulary) with tsc --strict, and a deliberately wrong property was confirmed to fail.
+- Only Chromium was tested (no Safari, Firefox or real phones). LCP is Lighthouse's simulated throttling against a local server, not a real host or CDN.
+- 200% zoom was measured as a 640x400 CSS viewport at 2x pixel density, which is what the browser lays out at 1280px and 200%.
