@@ -7,6 +7,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="preload" href="/fonts/literata-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/publicsans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>Call booked | Pouya Jalili, CPFA®</title>
 <style>
 @layer reset, tokens, base, components;
@@ -14,8 +15,9 @@
 @layer tokens { :root { --ink: #1E2A36; --paper: #F6F7F5; --firuzeh: #13706F; --slate: #5B6670; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --radius-btn: 4px; color-scheme: light; } }
 @layer base {
   @font-face { font-family: "Literata"; src: url("/fonts/literata-latin-var.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
-  body { background: var(--paper); color: var(--ink); font-family: "Literata", Georgia, serif; font-size: 1.125rem; line-height: 1.65; font-variation-settings: "opsz" 12; min-height: 100vh; display: grid; place-items: center; padding: var(--s7) var(--s4); }
-  h1 { font-size: clamp(2.25rem, 4.5vw + 1rem, 3.25rem); line-height: 1.12; font-weight: 450; letter-spacing: -0.01em; font-variation-settings: "opsz" 72; text-wrap: balance; }
+  @font-face { font-family: "Public Sans"; src: url("/fonts/publicsans-latin-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+  body { background: var(--paper); color: var(--ink); font-family: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 1.125rem; line-height: 1.65; min-height: 100vh; display: grid; place-items: center; padding: var(--s7) var(--s4); }
+  h1 { font-family: "Literata", Georgia, serif; font-size: clamp(2.25rem, 4.5vw + 1rem, 3.25rem); line-height: 1.12; font-weight: 450; letter-spacing: -0.01em; font-variation-settings: "opsz" 72; text-wrap: balance; }
   a { color: var(--firuzeh); text-underline-offset: 3px; }
   :focus-visible { outline: 2px solid var(--firuzeh); outline-offset: 2px; }
 }
@@ -24,6 +26,7 @@
   p { color: var(--slate); }
   .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 12px var(--s5); background: var(--firuzeh); color: var(--paper); border-radius: var(--radius-btn); font-size: 1rem; font-weight: 600; text-decoration: none; }
   .btn:focus-visible { outline-color: var(--ink); }
+  .home { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
 }
 </style>
 </head>
@@ -31,7 +34,7 @@
 <main>
   <h1>Call booked</h1>
   <p>Your call is booked. Calendly is sending a calendar invite to the email you entered.</p>
-  <a href="/">Back to the home page</a>
+  <a class="home" href="/">Back to the home page</a>
 </main>
 </body>
 </html>

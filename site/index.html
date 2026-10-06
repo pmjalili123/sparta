@@ -29,8 +29,8 @@
 <!-- The h1 is the LCP element, so its font is preloaded. -->
 <link rel="preload" href="fonts/literata-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/publicsans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/hero-wide-1600.webp" imagesrcset="assets/hero-wide-1600.webp 1600w, assets/hero-wide-2400.webp 2400w" imagesizes="100vw" type="image/webp" media="(min-width: 901px)">
-<link rel="preload" as="image" href="assets/pouya-hero-800.webp" imagesrcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" imagesizes="100vw" type="image/webp" media="(max-width: 900px)">
+<link rel="preload" as="image" fetchpriority="high" href="assets/hero-wide-1600.webp" imagesrcset="assets/hero-wide-1600.webp 1600w, assets/hero-wide-2400.webp 2400w" imagesizes="100vw" type="image/webp" media="(min-width: 901px)">
+<link rel="preload" as="image" fetchpriority="high" href="assets/pouya-hero-800.webp" imagesrcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" imagesizes="100vw" type="image/webp" media="(max-width: 900px)">
 
 <script type="application/ld+json">
 {
@@ -202,10 +202,10 @@
       linear-gradient(90deg, rgba(30, 42, 54, .97) 0%, rgba(30, 42, 54, .92) 36%, rgba(30, 42, 54, .5) 58%, rgba(30, 42, 54, .04) 80%),
       linear-gradient(0deg, rgba(30, 42, 54, .55), rgba(30, 42, 54, 0) 30%); }
   .hero .wrap { min-height: min(92vh, 860px); display: grid; align-items: center; padding-block: calc(var(--header-h) + var(--s8)) var(--s9); }
-  .hero-text { display: grid; gap: var(--s6); justify-items: start; max-width: 640px; }
+  .hero-text { display: grid; gap: var(--s6); justify-items: start; max-width: 760px; }
   .kicker { display: inline-flex; align-items: center; gap: var(--s2); font-size: .9375rem; font-weight: 600; color: var(--firuzeh-light); }
   .kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--firuzeh-light); box-shadow: 0 0 0 4px rgba(124, 200, 191, .2); }
-  .hero h1 { font-family: var(--display); color: var(--on-dark); font-size: clamp(2.375rem, 3.6vw + 1rem, 4rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 17ch; }
+  .hero h1 { font-family: var(--display); color: var(--on-dark); font-size: clamp(2rem, 2.4vw + 1.25rem, 3.5rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; font-variation-settings: "opsz" 72; font-variant-numeric: lining-nums; max-width: 21ch; }
   .hero .support { font-size: clamp(1.125rem, .5vw + 1rem, 1.25rem); line-height: 1.55; color: var(--on-dark-muted); max-width: 42ch; }
   .picker { display: grid; gap: var(--s3); }
   .picker-label { font-size: .875rem; font-weight: 600; color: var(--on-dark-muted); }
@@ -358,7 +358,7 @@
   .foot-lines a:hover { text-decoration: underline; }
   .foot-lines span { color: var(--on-dark-muted); min-height: 0; padding-block: var(--s2); line-height: 1.5; }
   .site-footer nav ul { display: grid; gap: 0; }
-  .site-footer .nav-link { color: var(--on-dark); padding-inline: 0; border-radius: 0; font-size: .9375rem; }
+  .site-footer .nav-link { color: var(--on-dark); padding-inline: 0; border-radius: 0; font-size: .9375rem; min-width: 44px; }
   .site-footer .nav-link:hover { background: none; color: var(--firuzeh-light); }
   .site-footer .disclosure { color: var(--on-dark-muted); font-size: .875rem; line-height: 1.65; max-width: none; }
   .site-footer .disclosure a { color: var(--on-dark); }
@@ -366,6 +366,9 @@
   .foot-bottom a { color: var(--on-dark); display: inline-flex; align-items: center; min-height: 44px; }
   @media (max-width: 900px) { .site-footer .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .foot-legal { grid-column: 1 / -1; } }
   @media (max-width: 560px) { .site-footer .wrap { grid-template-columns: minmax(0, 1fr); } }
+  /* fixed controls live in the footer landmark but sit over light content: keep their own focus colors */
+  .site-footer .to-top:focus-visible { outline-color: var(--firuzeh); }
+  .site-footer .mobile-cta .btn:focus-visible { outline-color: var(--ink); }
 
   /* ---------- Phone: sticky booking bar ---------- */
   .mobile-cta { display: none; }
@@ -421,8 +424,8 @@
 
   <section class="hero on-dark" id="top" aria-labelledby="hero-h">
     <picture class="hero-media">
-      <source media="(max-width: 900px)" type="image/webp" srcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" sizes="100vw">
-      <source media="(max-width: 900px)" srcset="assets/pouya-hero-480.jpg 480w, assets/pouya-hero-800.jpg 800w" sizes="100vw">
+      <source media="(max-width: 900px)" type="image/webp" srcset="assets/pouya-hero-480.webp 480w, assets/pouya-hero-800.webp 800w" sizes="100vw" width="800" height="1000">
+      <source media="(max-width: 900px)" srcset="assets/pouya-hero-480.jpg 480w, assets/pouya-hero-800.jpg 800w" sizes="100vw" width="800" height="1000">
       <source type="image/webp" srcset="assets/hero-wide-1600.webp 1600w, assets/hero-wide-2400.webp 2400w" sizes="100vw">
       <img src="assets/hero-wide-1600.jpg" srcset="assets/hero-wide-1600.jpg 1600w, assets/hero-wide-2400.jpg 2400w" sizes="100vw" width="1600" height="711" fetchpriority="high" alt="Pouya Jalili smiling, wearing a dark suit and white tie in a glass-walled office">
     </picture>
@@ -655,13 +658,12 @@
       <a href="https://brokercheck.finra.org/" rel="noopener">Check my background on FINRA BrokerCheck</a>
     </div>
   </div>
+  <a class="to-top" id="toTop" href="#top" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 14V4M4.5 8.5 9 4l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <div class="mobile-cta" id="mobileCta" aria-hidden="true">
+    <a class="btn" href="#contact" tabindex="-1">Book a 30-min call</a>
+  </div>
 </footer>
 
-<a class="to-top" id="toTop" href="#top" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 14V4M4.5 8.5 9 4l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-
-<div class="mobile-cta" id="mobileCta" aria-hidden="true">
-  <a class="btn" href="#contact" tabindex="-1">Book a 30-min call</a>
-</div>
 
 <script>
 (() => {
