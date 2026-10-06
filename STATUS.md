@@ -78,3 +78,7 @@ Not measurable here, and why:
 - The official schema.org validator and Google Rich Results test are blocked. JSON-LD was validated offline by type-checking it against schema-dts (the schema.org vocabulary) with tsc --strict, and a deliberately wrong property was confirmed to fail.
 - Only Chromium was tested (no Safari, Firefox or real phones). LCP is Lighthouse's simulated throttling against a local server, not a real host or CDN.
 - 200% zoom was measured as a 640x400 CSS viewport at 2x pixel density, which is what the browser lays out at 1280px and 200%.
+
+## After the loop (Oct 6)
+- 571c747 "h1 split": h1 is now "My family came here in the '90s with $1,000." The lead line beneath it reads "Now I help people get the early money decisions right." (Public Sans, brighter than ordinary supporting text). The audience sentence was dropped from the hero because the chips already name the audiences. Original h1 size restored: 3 lines at 360px, 2 at 1280px, 3 at 1440px and wider. Scorecard iteration 05: 99.93.
+- d8dbd2e "og image: match split headline": the share image matches the split hero. Meta description and og:description are unchanged and still describe the three audiences.
