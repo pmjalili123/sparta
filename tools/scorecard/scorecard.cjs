@@ -212,7 +212,7 @@ async function layout(browser) {
       ctaCover = await page.evaluate(() => {
         const bar = document.getElementById('mobileCta'); if (!bar || !bar.classList.contains('show')) return false;
         const top = bar.getBoundingClientRect().top;
-        const texts = [...document.querySelectorAll('footer *')].filter(e => e.children.length === 0 && e.textContent.trim()).map(e => e.getBoundingClientRect().bottom);
+        const texts = [...document.querySelectorAll('footer *')].filter(e => e.children.length === 0 && e.textContent.trim() && !e.closest('#mobileCta, #toTop')).map(e => e.getBoundingClientRect().bottom);
         return Math.max(...texts) > top + 1;
       });
     }
